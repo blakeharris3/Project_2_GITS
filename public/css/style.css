@@ -1,0 +1,29 @@
+html{
+  background-image: url(https://media.giphy.com/media/fHrM9Iyl0KNbBYj2lg/giphy.gif);
+  background-color:rgba(0, 0, 0, .5);
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+body{
+  background: rgba(0, 0, 0, .5);
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+h1{
+  color: goldenrod;
+}
+a{
+  margin: 10px;
+}
+#mehhh {
+    background: rgba(120, 156, 255, 0.75);
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+      <h1> Welcome to Galactic Interplanetary Travel System</h1>
+      <nav>
+
+        <% if(logged === true){ %>
+        <a href="/auth/logout">Logout</a>
+
+        <% }else { %>
+          <a href="/auth/login">Login</a>
+         <% } %>
+
+         <a href="/trips/new">New trip</a> 
+         <a href="/destinations">Our Destinations</a> 
+         <a href="/trips/index.ejs">My trips</a> 
+         <a href="/aboutus">About Us</a>
+      </nav>
+    </body>
+</html>
