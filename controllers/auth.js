@@ -14,7 +14,7 @@ router.get("/login", (req, res) => {
 router.post('/register', async(req, res) => {
     try{
         const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-        const user = await User.create({
+        await User.create({
             username: req.body.username,
             password: passwordHash,
             email: req.body.email,
