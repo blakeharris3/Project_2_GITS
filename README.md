@@ -51,5 +51,6 @@ By:
 
 ### Struggles 
 
+- Mongoose-unique-validator
 
 

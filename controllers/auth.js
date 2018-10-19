@@ -13,20 +13,22 @@ router.get("/login", (req, res) => {
 
 router.post('/register', async(req, res) => {
     try{
-        const password = req.body.password;
-        const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-        const userEntry = {};
-        userEntry.username = req.body.username;
-        userEntry.password = passwordHash;
-        userEntry.email = req.body.email;
-        userEntry.name = req.body.name;
-        req.session.username = req.body.username;
-        await User.create(userEntry);
+        const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+        await User.create({
+            username: req.body.username,
+            password: passwordHash,
+            email: req.body.email,
+            name: req.body.name
+        })
         req.session.message = '';
-        res.redirect('/auth/login');
+        req.session.logged = true;
+        res.redirect('/');
     }
     catch (err){
-        res.send(err)
+        console.log(err)
+        res.status(500).json({
+            "message": "something went wrong, check your console"
+        })
     }
 })
 
