@@ -10,12 +10,12 @@
 
 
 
-![Landing Page](./photos/landing)
-![Login](./photos/login)
-![Destination](./photos/destination)
-![New Trip](./photos/newtrip)
-![About Us](./photos/aboutus)
-![My Trips](./photos/mytrip)
+![Landing Page](./photos/landing.png)
+![Login](./photos/login.png)
+![Destination](./photos/destination.png)
+![New Trip](./photos/newtrip.png)
+![About Us](./photos/aboutus.png)
+![My Trips](./photos/mytrip.png)
 
 
 ### Technologies
