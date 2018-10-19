@@ -1,6 +1,7 @@
 # Project 2 - G.I.T.S
 - Galactic interplanetary Travel Systems
 
+
 By:
   - Blake Harris   
   - Avery-Dante Hinds

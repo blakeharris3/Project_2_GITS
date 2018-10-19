@@ -48,5 +48,5 @@ app.use('/', (req, res) =>{
 
 
 app.listen(port, ()=>{
-    console.log(`i can fucking hear you on port: ${port}`);
+    console.log(`i can hear you on port: ${port}`);
 });

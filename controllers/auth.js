@@ -32,7 +32,7 @@ router.post('/register', async(req, res) => {
 
 router.post('/login', async(req, res) => {
     try{
-        const foundUser = await User.findOne({ username: req.body.username});
+        const foundUser = await User.findOne({username: req.body.username});
         if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
                 req.session.logged = true;
@@ -49,15 +49,19 @@ router.post('/login', async(req, res) => {
     }
 });
 
-router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            res.send(err);
+router.get('/logout', async(req, res) => {
+  try{
+    await req.session.destroy((err) => {
+      if (err) {
+        res.send(err);
+          } else {
         }
-        else{
-            res.redirect('/')
-        }
+        res.redirect('/')
     })
+  }
+  catch (err) {
+      res.send(err);
+  }
 })
 
 
