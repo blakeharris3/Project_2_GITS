@@ -1,12 +1,11 @@
 # Project 2 - G.I.T.S
 - Galactic interplanetary Travel Systems
-- Blake Harris   
-- Avery-Dante Hinds
-- Colin Daniel
-- Daniel Scott
-- Jeff Bridges  
-- Liam Nielsons
-- Drake
+
+
+By:
+  - Blake Harris   
+  - Avery-Dante Hinds
+  - Colin Daniel
 
 
 
