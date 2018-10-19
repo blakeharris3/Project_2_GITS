@@ -38,10 +38,10 @@ app.use("/trips", tripsController);
 app.use('/', (req, res) =>{
   
   
-  
+
     res.render("home.ejs", {username: req.session.username,
     name: req.session.name,
-  session : req.session.logged})
+  logged : req.session.logged})
 });
 
 

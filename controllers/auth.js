@@ -22,7 +22,6 @@ router.post('/register', async(req, res) => {
         userEntry.name = req.body.name;
         req.session.username = req.body.username;
         await User.create(userEntry);
-        req.session.logged = true;
         req.session.message = '';
         res.redirect('/auth/login');
     }
@@ -36,13 +35,14 @@ router.post('/login', async(req, res) => {
         const foundUser = await User.findOne({ username: req.body.username});
         if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
-            res.render('home.ejs', {session: req.session.logged})
+                req.session.logged = true;
+                res.redirect('/')
             }
             else{
                 req.session.message = "Username or password is wrong";
                 res.redirect("/auth/login");
             }
-        }
+        }                    
     }
     catch (err) {
         res.send(err)

@@ -10,7 +10,12 @@
 
 
 
-![GITS WireFrame]("Link")
+![Landing Page](./photos/landing)
+![Login](./photos/login)
+![Destination](./photos/destination)
+![New Trip](./photos/newtrip)
+![About Us](./photos/aboutus)
+![My Trips](./photos/mytrip)
 
 
 ### Technologies
