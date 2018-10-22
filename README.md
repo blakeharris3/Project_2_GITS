@@ -52,5 +52,7 @@ By:
 ### Struggles 
 
 - Mongoose-unique-validator
+- Req.Sessions Login validation 
+- Calculating the escape velocity from Ganymede with a payload of 100 humans
 
 

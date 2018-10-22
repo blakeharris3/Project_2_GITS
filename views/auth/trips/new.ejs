@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Book A Trip</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Plan a Trip!</h1>
-    <nav>
-      <ul>
-        <li><a href="/gits">Home</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <form action="/gits" method="POST">
-      Passenger Name: <input type="text" name="name">
-    <select name="destinationId">
+    <section>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/destinations">Destinations</a>
+        <a href="/aboutus">About Us</a>  
+        <br>
+      </nav>
+    </section>
+  <h1>Plan A Trip!</h1>
+  <br>
+    <div>
+       <form action="/auth" method="POST">
+      Passenger Name: <input type="text" name="name"><br>
+      Destination: <select name="destinationId">
         <%for (let i = 0; i < destinations.length; i++){ %>
-            <option value="<%=destinations[i].id%>"><%=destinations[i].name%></option>
+            <option value="<%=destinations[i]._id%>"><%=destinations[i].name%></option>
         <%}%>
-        </select>
-      Tickets: <input type="number" name="ticketQty">
-      Bag Count: <input type="number" name="luggageQty">
-      <input type="text" name="name">
+        </select><br>
+      Tickets: <input type="number" name="ticketQty"><br>
+      Bag Count: <input type="number" name="luggageQty"><br>
       <button type="submit">Confirm Flight</button>
     </form>
-  </main>
+    </div>
+   
+  
 
 </body>
 </html>

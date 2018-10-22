@@ -13,7 +13,7 @@ const destinationsSchema = new mongoose.Schema({
   escapeVelocity: String,
   massInKg: Number,
   density: String,
-  ship: [Ship.schema]
+  image: String
 });
 
 module.exports = mongoose.model('Destination', destinationsSchema);

@@ -7,8 +7,8 @@ const usersSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true }, 
   email: {type: String , required: true, unique: true },
   password: {type: String, required: true},
-  trip: [Trip.schema],
-  curentTrip: Number
+  trips: [Trip.schema],
+  currentTrip: Number
 });
 
 usersSchema.plugin(uniqueValidator);

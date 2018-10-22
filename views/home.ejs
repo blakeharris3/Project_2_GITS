@@ -7,20 +7,24 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-      <h1> Welcome to Galactic Interplanetary Travel System</h1>
-      <nav>
+      <h1> Welcome To <br/> G.I.T.S</h1>
+      <h2>Galactic Interplanetary Travel Systems</h2>
+        <nav>
+          <% if(logged === true){ %>
+          <a href="/auth/logout">Logout</a>
 
-        <% if(logged === true){ %>
-        <a href="/auth/logout">Logout</a>
+          <% }else { %>
+            <a href="/auth/login">Login</a>
+          <% } %>
 
-        <% }else { %>
-          <a href="/auth/login">Login</a>
-         <% } %>
+          <a href="/auth/new">New Trip</a> 
+          <a href="/destinations">Our Destinations</a> 
+          <a href="/auth/<%= id %>">My trips</a> 
+          <a href="/aboutus">About Us</a>
+        </nav>
+      
 
-         <a href="/trips/new">New trip</a> 
-         <a href="/destinations">Our Destinations</a> 
-         <a href="/auth/<%= id %>">My trips</a> 
-         <a href="/aboutus">About Us</a>
-      </nav>
+      
+      
     </body>
 </html>

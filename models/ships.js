@@ -5,7 +5,8 @@ const shipsSchema = new mongoose.Schema({
   speedInKmHr: Number,
   capacity: Number, 
   captain: String,
-  flightAttendants: [String]
+  flightAttendants: [String], 
+  image: String
 
 });
 

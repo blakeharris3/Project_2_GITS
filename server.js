@@ -11,6 +11,7 @@ const session = require("express-session");
 
 const authController = require("./controllers/authAndTrips");
 const destinationsController = require('./controllers/destinations');
+const aboutUsController = require('./controllers/aboutus')
 
 
 
@@ -37,7 +38,7 @@ app.use(express.static(__dirname + '/public'));
 //////////  See Controllers    /////////////////
 app.use("/auth", authController);
 app.use("/destinations", destinationsController);
-
+app.use("/aboutus", aboutUsController);
 
 
 
@@ -46,7 +47,7 @@ app.use("/destinations", destinationsController);
 ////////////   Home     ////////////////////
 app.use('/', (req, res) =>{
 
-req.session.last = "Home"
+req.session.lastPage = "Home"
     res.render("home.ejs", {username: req.session.username,
     name: req.session.name,
   logged : req.session.logged,

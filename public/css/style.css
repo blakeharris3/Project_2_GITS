@@ -3,6 +3,9 @@ html{
   background-color:rgba(0, 0, 0, .5);
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
  
 }
 body{
@@ -14,7 +17,22 @@ body{
   
 }
 h1{
-  color: goldenrod;
+  color: rgb(238, 181, 37);
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 2px 2px cornflowerblue;
+  letter-spacing: 5px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  
+}
+h2{
+  margin-top: 2px;
+  font-size: 30px;
+  color: cornflowerblue;
+  text-shadow: 2px 2px rgba(245, 0, 233, 0.897);
+  letter-spacing: 2px;
+  
 }
 a{
   margin: 10px;
@@ -25,5 +43,61 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
+    padding: 20px;
+    font-size: 25px;
+    border: 3px ridge rgba(153, 205, 50, 0.774);
 
+}
+nav{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 183, 0, 0.822);
+  border: 2px outset cornflowerblue;
+}
+section{
+  border: 5px ridge rgba(153, 205, 50, 0.774);
+  border-radius: 15px 15px 0 0;
+  margin-bottom: 15px;
+  padding: px;
+  background: rgba(36, 226, 179, 0.637);
+  text-align: center;
+  height: 50px;
+}
+ul.destinations{
+  padding: 10px;
+  font-size: 30px;
+ 
+ 
+
+  list-style: none;
+}
+li{
+  list-style: none;
+  color: rgb(192, 143, 20);
+  text-shadow: 1px 1.5px maroon;
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+  color: rgba(201, 0, 191, 0.75);
+  text-shadow: 2px 2px rgb(2, 49, 58);
+}
+ul.destinations{
+  padding: 20px;
+  font-size: 25px;
+  background: rgba(0, 255, 213, 0.596);
+  border-radius: 5px 20px 5px 20px;
+  text-align: center;
+  border: 3px ridge rgba(153, 205, 50, 0.774);
+}
+nav{
+  font-size: 25px;
+}
+div{ 
+  background-color: rgba(120, 156, 255, 0.582);
+  padding: 20px;
+  border: 3px ridge rgba(153, 205, 50, 0.774);
+  margin-top: 100px;
+  font-size: 25px;
 }

@@ -4,10 +4,11 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
-   
+
+         
     <h1>My trips</h1>
 
     <nav>
@@ -18,37 +19,31 @@
         <% }else { %>
           <a href="/auth/login">Login</a>
         <% } %>
-
-         <a href="/trips/new">New trip</a> 
+         <a href="/">Home</a>
+         <a href="/auth/new">New trip</a> 
          <a href="/destinations">Our Destinations</a> 
-         <a href="/trips/index.ejs">My trips</a> 
+
          <a href="/aboutus">About Us</a>
       </nav>
-
-      <div id="userPic">    
-        <img src="<%= user.picture %>" alt="the users picture">
-        <small><%= user.company %></small>
-      </div>
      
       <div id="curentTrip">
-      <% for (let i = 0; i < users.trips.length; i++) { %>
+      <% for (let i = 0; i < user.trips.length; i++) { %>
        <% if (user.currentTrip === i) { %>
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
      <% }}  %>
-        <h6>Destination: <%= user.trips[curentTrip].destination.name %></h6>
-        <h6>Number of Tickets: <%= user.trips[curentTrip].ticketQty %></h6>
-        <h6>Ship name: <%= user.trips[curentTrip].ship.name %></h6>
-        <img src="<%= ship.img %>" alt="this is the ship">
+        <h6>Destination: <%= user.trips[currentTrip].destination[0].name %></h6>
+        <h6>Number of Tickets: <%= user.trips[currentTrip].ticketQty %></h6>
+       
       </div>
-      <% if(user.curentTrip > 0) { %>
-<a href="/auth/<%= user._id %>/0">previous trip</a>
+      <% if(user.currentTrip > 0) { %>
+<a href="/auth/<%= user._id %>/0">Previous trip</a>
 <% } %>
-<a href="/auth/<%= user._id %>/1">next trip</a>
-<a href="/auth/<%= user._id %>/edit">edit trip details</a>
+<a href="/auth/<%= user._id %>/1">Next trip</a>
+<a href="/auth/<%= user._id %>/edit">Edit trip</a>
 
 <form method="POST" action="/auth/<%= user._id %>?_method=DELETE">
 
-  <input type="submit" value="cancel trip?">
+  <input type="submit" value="Cancel Trip">
 </form>
     </body>
 </html>
