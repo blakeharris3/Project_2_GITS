@@ -12,7 +12,8 @@ const destinationsSchema = new mongoose.Schema({
   gravity: String, 
   escapeVelocity: String,
   massInKg: Number,
-  density: String
+  density: String,
+  ship: [Ship.schema]
 });
 
 module.exports = mongoose.model('Destination', destinationsSchema);

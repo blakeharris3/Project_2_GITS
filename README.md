@@ -1,5 +1,5 @@
 # Project 2 - G.I.T.S
-- Galactic interplanetary Travel Systems
+- Galactic Interplanetary Travel Systems
 
 
 By:
@@ -51,5 +51,6 @@ By:
 
 ### Struggles 
 
+- Mongoose-unique-validator
 
 

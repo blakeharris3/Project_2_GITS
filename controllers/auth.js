@@ -13,6 +13,7 @@ router.get("/login", (req, res) => {
 
 router.post('/register', async(req, res) => {
     try{
+<<<<<<< HEAD
         const password = req.body.password;
         const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
         const userEntry = {};
@@ -25,11 +26,24 @@ router.post('/register', async(req, res) => {
         const user = await User.create(userEntry);
         req.session.id = user._id;
         req.session.lastPage = "register";        
+=======
+        const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+        await User.create({
+            username: req.body.username,
+            password: passwordHash,
+            email: req.body.email,
+            name: req.body.name
+        })
+>>>>>>> 871a26c86d85d38697d4f844374dd934c9eff2ca
         req.session.message = '';
-        res.redirect('/auth/login');
+        req.session.logged = true;
+        res.redirect('/');
     }
     catch (err){
-        res.send(err)
+        console.log(err)
+        res.status(500).json({
+            "message": "something went wrong, check your console"
+        })
     }
 })
 
