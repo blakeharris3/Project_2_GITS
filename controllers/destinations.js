@@ -3,12 +3,9 @@ const router = express.Router();
 const destinations = require("../models/destinations")
 
 router.get('/', async(req, res)=>{
-const Alldestinations = await 
+const Alldestinations = await destinations.find();
 req.session.lastPage = "Destinations"
-res.render("planets/index.ejs", {})
-
-router.get("/", (req, res) =>{
-    res.send("hEyy THerE")
+res.render("planets/index.ejs", {Alldestinations})
 })
 
 router.get("/:id", (req, res) => {
@@ -26,4 +23,4 @@ router.get("/:id", (req, res) => {
 
 
 
-module.exports = router
+module.exports = router;

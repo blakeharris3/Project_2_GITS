@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
+
 const bcrypt = require('bcryptjs');
+
+/////
+const shipModel = require("../models/ships");
+const tripModel = require("../models/trips")
+
+const populateDModel = require("../models/populateDestinations");
+const populateShips = require("../models/populateShips");
+const Destinations = require('../models/destinations');
+/////
 
 router.get('/register', (req, res) => {
     res.render("auth/register.ejs", {usedUsername: req.session.usedUsername});
@@ -11,32 +21,53 @@ router.get("/login", (req, res) => {
     res.render('auth/login.ejs', {message: req.session.message});
 });
 
+router.get('/new', async (req, res) => {
+    const allDestinations = await Destinations.find({})
+    res.render('auth/trips/new.ejs', {
+        destinations: allDestinations
+    })
+})
+
 router.post('/register', async(req, res) => {
     try{
-<<<<<<< HEAD
-        const password = req.body.password;
-        const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-        const userEntry = {};
-        userEntry.username = req.body.username;
-        userEntry.password = passwordHash;
-        userEntry.email = req.body.email;
-        userEntry.name = req.body.name;
-        userEntry.curentTrip = 0;
-
-        const user = await User.create(userEntry);
-        req.session.id = user._id;
-        req.session.lastPage = "register";        
-=======
         const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        const destinations = await Destinations.collection.insertMany(populateDModel);
+        const ships = await shipModel.collection.insertMany(populateShips);
+
+        for (let i = 0; i < ships.length; i++) {
+            destinations[i].findOneAndUpdate({
+                ships
+            }, {
+                ships: ships[i]
+            }, (err, updated) => {
+                if (err) console.log(err)
+                else console.log(updated)
+            })
+        }
+
+        const trip = tripModel.create({
+            name: "it works",
+            destination: destinations[0],
+            ticketQty: 1,
+            luggageQty: 30
+        })
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         await User.create({
             username: req.body.username,
             password: passwordHash,
             email: req.body.email,
-            name: req.body.name
-        })
->>>>>>> 871a26c86d85d38697d4f844374dd934c9eff2ca
+            name: req.body.name,
+            trips: trip
+        });
         req.session.message = '';
         req.session.logged = true;
+
+        
+
+  
+
         res.redirect('/');
     }
     catch (err){
@@ -53,19 +84,35 @@ router.post('/login', async(req, res) => {
     try{
         const foundUser = await User.findOne({username: req.body.username});
         if(foundUser){
+
+            // if the password entered is the same as the password for 
+            // the found user they'll be rediriected back to the last page
+            // the user was on.
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
                 req.session.logged = true;
+
+                // Home.ejs
                 if(req.session.lastPage === "Home"){
                 res.redirect('/')
                 }
+                
+                // Destiantions.ejs
                 else if(req.session.lastPage === "Destinations"){
                     res.redirect('/destinations')
                 }
+
+                // auth/user.ejs
                 else if(req.session.lastPage === "My Trips"){
                     res.redirect("/auth/" + req.session.id);
                 }
-                else if(req.session.session.lastPage === "About Us"){
+
+                // auth/aboutus.ejs
+                else if(req.session.lastPage === "About Us"){
                     res.redirect("/aboutus")
+                }
+            
+                else{
+                    res.redirect('/')
                 }
             }
             else{

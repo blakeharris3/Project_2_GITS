@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <header>
+    <h1>Plan a Trip!</h1>
+    <nav>
+      <ul>
+        <li><a href="/gits">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <form action="/gits" method="POST">
+      Passenger Name: <input type="text" name="name">
+    <select name="destinationId">
+        <%for (let i = 0; i < destinations.length; i++){ %>
+            <option value="<%=destinations[i].id%>"><%=destinations[i].name%></option>
+        <%}%>
+        </select>
+      Tickets: <input type="number" name="ticketQty">
+      Bag Count: <input type="number" name="luggageQty">
+      <input type="text" name="name">
+      <button type="submit">Confirm Flight</button>
+    </form>
+  </main>
+
+</body>
+</html>
