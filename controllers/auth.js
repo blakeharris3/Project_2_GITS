@@ -20,8 +20,11 @@ router.post('/register', async(req, res) => {
         userEntry.password = passwordHash;
         userEntry.email = req.body.email;
         userEntry.name = req.body.name;
-        req.session.username = req.body.username;
-        await User.create(userEntry);
+        userEntry.curentTrip = 0;
+
+        const user = await User.create(userEntry);
+        req.session.id = user._id;
+        req.session.lastPage = "register";        
         req.session.message = '';
         res.redirect('/auth/login');
     }
@@ -30,13 +33,26 @@ router.post('/register', async(req, res) => {
     }
 })
 
+
+/// login routes
 router.post('/login', async(req, res) => {
     try{
         const foundUser = await User.findOne({username: req.body.username});
         if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)){
                 req.session.logged = true;
+                if(req.session.lastPage === "Home"){
                 res.redirect('/')
+                }
+                else if(req.session.lastPage === "Destinations"){
+                    res.redirect('/destinations')
+                }
+                else if(req.session.lastPage === "My Trips"){
+                    res.redirect("/auth/" + req.session.id);
+                }
+                else if(req.session.session.lastPage === "About Us"){
+                    res.redirect("/aboutus")
+                }
             }
             else{
                 req.session.message = "Username or password is wrong";
@@ -64,6 +80,41 @@ router.get('/logout', async(req, res) => {
   }
 })
 
+// My trips route
+router.get('/:id', async(req, res)=>{
+        try{
+            const user = await findById(req.params.id);
+            req.session.lastPage = "My Trips"
+            res.render("user.ejs", {
+                user
+            })
+        }
+        catch(err){
+            console.log(err)
+        }
+});
+
+router.get("/:id/0", async(req, res)=>{
+    try{
+        const user = await findById(req.params.id);
+      await req.session.curentTrip--;
+      res.render("user.ejs", {user})
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+router.get("/:id/1", async (req, res) => {
+    try {
+        const user = await findById(req.params.id);
+        await req.session.curentTrip++;
+        res.render("user.ejs", { user })
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 
 
 

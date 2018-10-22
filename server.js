@@ -41,7 +41,8 @@ app.use('/', (req, res) =>{
 
     res.render("home.ejs", {username: req.session.username,
     name: req.session.name,
-  logged : req.session.logged})
+  logged : req.session.logged,
+id: req.session.id})
 });
 
 
