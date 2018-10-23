@@ -4,7 +4,7 @@ const destinationsArray = [
     avgDistanceInKm: 2.25e+8,
     travelTimeInHrs: Number,
     priceInUSD: 5e+4,
-    ships: [],
+    ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 24.6,
     radiusInKm: 3389,
     gravity: "3.71 m/s²",
@@ -16,10 +16,10 @@ const destinationsArray = [
     
   },{
     name: "Venus",
-    avgDistanceInKm: 261e+6,
+    avgDistanceInKm: 2.61e+8,
     travelTimeInHrs: Number,
     priceInUSD: 7e+4,
-    ships: [],
+    ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 2802,
     radiusInKm: 6052,
     gravity: "8.87 m/s²",
@@ -29,10 +29,10 @@ const destinationsArray = [
     image: '/imgs/venus.png'
   },{
     name: "Europa",
-    avgDistanceInKm: 628e+6,
+    avgDistanceInKm: 6.28e+8,
     travelTimeInHrs: Number,
     priceInUSD: 14e+4,
-    ships: [],
+    ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 85,
     radiusInKm: 1561,
     gravity: "1.315 m/s²",
@@ -43,10 +43,10 @@ const destinationsArray = [
     
   }, {
     name: "Jupiter",
-    avgDistanceInKm: 588e+6,
+    avgDistanceInKm: 5.88e+8,
     travelTimeInHrs: Number,
     priceInUSD: 12e+4,
-    ships: [],
+    ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 9.9,
     radiusInKm: 69911,
     gravity: "24.79 m/s²",
@@ -56,10 +56,10 @@ const destinationsArray = [
     image: "/imgs/jupiter.png"
   }, {
     name: "Saturn",
-    avgDistanceInKm: 1200e+6,
+    avgDistanceInKm: 1.2e+9,
     travelTimeInHrs: Number,
     priceInUSD: 21e+4,
-    ships: [],
+    ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 10.7,
     radiusInKm: 58232,
     gravity: "10.44 m/s²",
@@ -72,7 +72,7 @@ const destinationsArray = [
     avgDistanceInKm: 7.5e+9,
     travelTimeInHrs: 7.5,
     priceInUSD: 5.274e+7,
-    ships: [],
+    ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 24,
     radiusInKm: 3,
     gravity: "9.8 m/s²",
@@ -82,10 +82,10 @@ const destinationsArray = [
     image: "/imgs/spacestation.png"
   }, {
     name: "Ganymede",
-    avgDistanceInKm: Number,
+    avgDistanceInKm: 6.3e+8,
     travelTimeInHrs: Number,
     priceInUSD:1e+5,
-    ships: [],
+    ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 168,
     radiusInKm: 2634,
     gravity: "1.428 m/s²",
@@ -98,7 +98,7 @@ const destinationsArray = [
     avgDistanceInKm: 4.3e+9,
     travelTimeInHrs: Number,
     priceInUSD: 1e+6,
-    ships: [],
+    ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 16,
     radiusInKm: 24622,
     gravity: "11.15 m/s²",
@@ -108,10 +108,10 @@ const destinationsArray = [
     image: "/imgs/neptune.png"
   }, {
     name: "Callisto",
-    avgDistanceInKm: 628e+6,
+    avgDistanceInKm: 6.28e+8,
     travelTimeInHrs: Number,
     priceInUSD: 1e+5,
-    ships: [],
+    ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 400.8,
     radiusInKm: 2410,
     gravity: "1.236 m/s²",

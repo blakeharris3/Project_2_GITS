@@ -6,7 +6,7 @@ const destinationsSchema = new mongoose.Schema({
   avgDistanceInKm: Number,
   travelTimeInHrs: Number, 
   priceInUSD: Number, 
-  ships: [Ship.schema], 
+  ships: String, 
   lengthOfDayInHrs: Number, 
   radiusInKm: Number,
   gravity: String, 

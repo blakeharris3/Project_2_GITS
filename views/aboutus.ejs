@@ -4,7 +4,7 @@
     <title>About Us</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
   <section>
@@ -17,12 +17,44 @@
         <% } %>
         <a href="/">Home</a>
          <a href="/trips/new">New trip</a> 
+         <a href="/destinations">Our Destinations</a>
          <a href="/aboutus">About Us</a>
-         <a href="/destinations">Back</a>
+         
       </nav>
     </section> 
     <h1>About Us</h1>
     <br>
-      <h1>We fly out of this world... literally</h1>
+    <h2>Welcome To G.I.T.S <br/> Where We Provide Outstanding Interplanetary Travel Services</h2>
+      <div>
+        <h3>Our History</h3>
+        <p>G.I.T.S was founded in 2018 by three outstanding citizens who were enrolled in GA's renowned WDI cohort. One day while daydreaming and ignoring their instructor, they decided they wanted to go to space.</br> Since that day Blake Harris, Avery-Dante Hinds, and Colin Daniel have forever changed the space travel industry.</p>
+      </div>
+      <div>
+        <h3>Our Purpose</h3>
+        <p>Our purpose here at G.I.T.S is to ensure that our clients enjoy a safe, entertaining, and swift trip through the last frontier. We pride ourselves in our ability to put a smile on your face as we traverse the heavens. With our ever growing fleet of Next-Gen Starships we are always a step ahead of SpaceX and Amazon!! </p>
+      </div>
+      <div>
+        <h3 id="">Our Fleet</h3>
+        <p>Our fleet is comprised of ships built with technology from the future......literally. One day, while on a trip to a Hackers Meetup, the founders of G.I.T.S. were smoking peyote when they were abruptly visited by multidimensional traveling humanoids who gifted them with unprecedented knowledge. Using this miraculous achievement they crafted three ships that make SpaceX's Falcon rockets look like Nissan Sentra's.</p>
+      </div>
+      <br>
+      <br>
+      <h3>The Fleet</h3>
+      <% for (let i = 0; i < ship.length; i++) { %>
+      <div>
+          <li><strong>Ship:</strong> <%=ship[i].name%></li>
+         <li><strong>Top Speed:</strong> <%=ship[i].speedInKmHr%> km/hr</li>
+          <li><strong>Capacity:</strong> <%=ship[i].capacity%></li>
+          <li><strong>Captain:</strong> <%=ship[i].captain%></li>
+          <li><strong>Flight Attendants:</strong> <%=ship[i].flightAttendants%></li>
+          
+          <img src="<%=ship[i].image%>" alt="Ships Image">
+      </div>       
+        <% } %>
+        <br>
+        <br>
+        <br>
+        <h4>*Disclaimer*</h4>
+    <h3>In the event that you don't make it to your destination!!</h3>  
   </body>
 </html>

@@ -48,6 +48,7 @@ app.use("/aboutus", aboutUsController);
 app.use('/', (req, res) =>{
 
 req.session.lastPage = "Home"
+    req.session.message = "";
     res.render("home.ejs", {username: req.session.username,
     name: req.session.name,
   logged : req.session.logged,

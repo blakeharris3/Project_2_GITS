@@ -17,10 +17,10 @@ body{
   
 }
 h1{
-  color: rgb(238, 181, 37);
+  color: #eeb525;
   text-align: center;
   font-size: 50px;
-  text-shadow: 2px 2px cornflowerblue;
+  text-shadow: 2px 2px #6495ed;
   letter-spacing: 5px;
   margin-bottom: 2px;
   margin-top: 2px;
@@ -30,9 +30,23 @@ h2{
   margin-top: 2px;
   font-size: 30px;
   color: cornflowerblue;
-  text-shadow: 2px 2px rgba(245, 0, 233, 0.897);
+  text-shadow: 2px 2px #f500e9e5;
   letter-spacing: 2px;
+  text-align: center;
   
+}
+h3{
+  margin-top: 2px;
+  font-size: 25px;
+  color: #eeb525;
+  text-shadow: 2px 2px #f500e9e5;
+  letter-spacing: 2px;
+}
+h4{
+  font-size: 1.5em;
+  color: mediumvioletred;
+  text-shadow: 1.5px 1px goldenrod;
+  margin: 2px 5px;
 }
 a{
   margin: 10px;
@@ -46,7 +60,7 @@ a{
     margin-top: 100px;
     padding: 20px;
     font-size: 25px;
-    border: 3px ridge rgba(153, 205, 50, 0.774);
+    border: 3px ridge #99cd32c5;
 
 }
 nav{
@@ -56,11 +70,14 @@ nav{
   border: 2px outset cornflowerblue;
 }
 section{
-  border: 5px ridge rgba(153, 205, 50, 0.774);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px ridge #99cd32c5;
   border-radius: 15px 15px 0 0;
   margin-bottom: 15px;
   padding: px;
-  background: rgba(36, 226, 179, 0.637);
+  background: #24e2b3a2;
   text-align: center;
   height: 50px;
 }
@@ -80,7 +97,7 @@ li{
 }
 a{
   text-decoration: none;
-  color: rgba(201, 0, 191, 0.75);
+  color: #c900bfbf;
   text-shadow: 2px 2px rgb(2, 49, 58);
 }
 ul.destinations{
@@ -95,9 +112,15 @@ nav{
   font-size: 25px;
 }
 div{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: rgba(120, 156, 255, 0.582);
   padding: 20px;
   border: 3px ridge rgba(153, 205, 50, 0.774);
-  margin-top: 100px;
+  margin-top: 50px;
   font-size: 25px;
+}
+p{
+  margin-top: 0px;
 }

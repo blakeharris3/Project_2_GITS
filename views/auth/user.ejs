@@ -9,10 +9,10 @@
     <body>
 
          
-    <h1>My trips</h1>
+    <h1>My Trips</h1>
 
     <nav>
-
+        <a href="/auth/<%= user.id %>/edit">Edit User</a>
         <% if(logged === true){ %>
           <a href="/auth/logout">Logout</a>
 
@@ -28,22 +28,20 @@
      
       <div id="curentTrip">
       <% for (let i = 0; i < user.trips.length; i++) { %>
-       <% if (user.currentTrip === i) { %>
+     
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
-     <% }}  %>
-        <h6>Destination: <%= user.trips[currentTrip].destination[0].name %></h6>
-        <h6>Number of Tickets: <%= user.trips[currentTrip].ticketQty %></h6>
-       
+     
+        <h6>Destination: <%= user.trips[i].destination[0].name %></h6>
+        <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
+        <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
+       <br>
+      <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
+        <input type="hidden" value="<%=user._id%>" name="userId">
+        <input type="submit" value="Cancel Trip">
+      </form>
+      <% }  %>
       </div>
-      <% if(user.currentTrip > 0) { %>
-<a href="/auth/<%= user._id %>/0">Previous trip</a>
-<% } %>
-<a href="/auth/<%= user._id %>/1">Next trip</a>
-<a href="/auth/<%= user._id %>/edit">Edit trip</a>
 
-<form method="POST" action="/auth/<%= user._id %>?_method=DELETE">
 
-  <input type="submit" value="Cancel Trip">
-</form>
     </body>
 </html>

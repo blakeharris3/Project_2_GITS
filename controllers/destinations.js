@@ -4,15 +4,18 @@ const Destinations = require("../models/destinations")
 
 const popDestinations = require("../models/populateDestinations")
 
+
+    // Create Destinations
 // Destinations.collection.insertMany(popDestinations, (err, allGood)=>{
 //     if (err) console.log(err)
 //     else console.log("all gooooud")
 // })
 
 router.get('/', async(req, res)=>{
+        req.session.lastPage = "Destinations";
     try {
         const allDestinations = await Destinations.find();
-        req.session.lastPage = "Destinations"
+        req.session.message = "";    
         res.render("destinations/index.ejs", {
             allDestinations,
             username: req.session.username,
@@ -26,8 +29,11 @@ router.get('/', async(req, res)=>{
 })
 
 router.get('/:id', async (req, res) => {
+    req.session.lastPage = "Destinations";
     try {
         const destinations = await Destinations.findById(req.params.id);
+        req.session.message = "";
+        
         res.render('destinations/show.ejs', {
             destinations,
             username: req.session.username,
