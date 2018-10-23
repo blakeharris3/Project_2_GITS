@@ -1,7 +1,7 @@
 const populateShipsArray = [
   {
     name: "Galileo",
-    speedInKmHr: 7.5e+7,
+    speedInKmHr: 7.5e+6,
     capacity: 2000,
     captain: "Andrea Fettucini",
     flightAttendants: ["Mercrutio", "Romeo", "Juliet"],
@@ -9,7 +9,7 @@ const populateShipsArray = [
   },
   {
     name: "Osiris",
-    speedInKmHr: 1e+9,
+    speedInKmHr: 1e+8,
     capacity: 50,
     captain: "Jeff Bezos",
     flightAttendants: ["Alexa", "Siri", "Hey Google"],
@@ -17,7 +17,7 @@ const populateShipsArray = [
   },
   {
     name: "Valkyrie",
-    speedInKmHr: 6.8e+7,
+    speedInKmHr: 6.8e+6,
     capacity: 1500,
     captain: "Chris Tucker",
     flightAttendants: ["Petra", "Ulysses"],

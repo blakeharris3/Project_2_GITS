@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Ship = require('./ships');
 
 const destinationsSchema = new mongoose.Schema({
   name: String, 

@@ -5,10 +5,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous|Orbitron" rel="stylesheet">
     </head>
     <body>
-      <h1> Welcome To <br/> G.I.T.S</h1>
+     <header>
+        <h1>   G.I.T.S</h1>
+     </header>
       <h2>Galactic Interplanetary Travel Systems</h2>
+      <section>
         <nav>
           <% if(logged === true){ %>
           <a href="/auth/logout">Logout</a>
@@ -22,5 +26,6 @@
           <a href="/auth/<%= id %>">My trips</a> 
           <a href="/aboutus">About Us</a>
         </nav>
+      </section>  
     </body>
 </html>

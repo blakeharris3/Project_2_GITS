@@ -2,7 +2,7 @@ const destinationsArray = [
   {
     name: "Mars",
     avgDistanceInKm: 2.25e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 33,
     priceInUSD: 5e+4,
     ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 24.6,
@@ -12,12 +12,10 @@ const destinationsArray = [
     massInKg: 6.39e+23,
     density: "3.93 g/cm³",
     image: "/imgs/mars.png"
-   
-    
   },{
     name: "Venus",
     avgDistanceInKm: 2.61e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 34.8,
     priceInUSD: 7e+4,
     ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 2802,
@@ -30,7 +28,7 @@ const destinationsArray = [
   },{
     name: "Europa",
     avgDistanceInKm: 6.28e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 92.3,
     priceInUSD: 14e+4,
     ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 85,
@@ -39,12 +37,11 @@ const destinationsArray = [
     escapeVelocity: "2.025 km/s",
     massInKg: 4.8e+22,
     density: "3.01 g/cm³",
-    image: "/imgs/europa.png"
-    
+    image: "/imgs/europa.png"  
   }, {
     name: "Jupiter",
     avgDistanceInKm: 5.88e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 86.5,
     priceInUSD: 12e+4,
     ships: "/imgs/valkyrie.png",
     lengthOfDayInHrs: 9.9,
@@ -57,7 +54,7 @@ const destinationsArray = [
   }, {
     name: "Saturn",
     avgDistanceInKm: 1.2e+9,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 160,
     priceInUSD: 21e+4,
     ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 10.7,
@@ -70,7 +67,7 @@ const destinationsArray = [
   },{
     name: "Bezos Elite VIP Spaceclub",
     avgDistanceInKm: 7.5e+9,
-    travelTimeInHrs: 7.5,
+    travelTimeInHrs: 75,
     priceInUSD: 5.274e+7,
     ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 24,
@@ -83,7 +80,7 @@ const destinationsArray = [
   }, {
     name: "Ganymede",
     avgDistanceInKm: 6.3e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 84,
     priceInUSD:1e+5,
     ships: '/imgs/galileo.png',
     lengthOfDayInHrs: 168,
@@ -96,7 +93,7 @@ const destinationsArray = [
   }, {
     name: "Neptune",
     avgDistanceInKm: 4.3e+9,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 43,
     priceInUSD: 1e+6,
     ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 16,
@@ -109,7 +106,7 @@ const destinationsArray = [
   }, {
     name: "Callisto",
     avgDistanceInKm: 6.28e+8,
-    travelTimeInHrs: Number,
+    travelTimeInHrs: 6.3,
     priceInUSD: 1e+5,
     ships: '/imgs/osiris.png',
     lengthOfDayInHrs: 400.8,
@@ -121,10 +118,4 @@ const destinationsArray = [
     image: "/imgs/callisto.png"
   }
 ]
-
-
-
-
-
-
 module.exports = destinationsArray;

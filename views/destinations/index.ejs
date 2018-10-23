@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
   </head>
   <body>
     
@@ -23,11 +24,13 @@
      
      <h1>Destinations</h1>  
     
-      <ul class= "destinations">
+      <section class= "destinations">
+        <ul >
         <%for(i = 0; i < allDestinations.length; i++) {%>
           <li><a href="/destinations/<%=allDestinations[i].id%>"><%=allDestinations[i].name%></a></li>
         <%}%>
-      </ul>
+        </ul>
+      </section>
     
   </body>
 </html>

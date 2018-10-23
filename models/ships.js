@@ -8,7 +8,6 @@ const shipsSchema = new mongoose.Schema({
   captain: String,
   flightAttendants: [String],
   image: String
-
 });
 
 module.exports = mongoose.model('Ship', shipsSchema);

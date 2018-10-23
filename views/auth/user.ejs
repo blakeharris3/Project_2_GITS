@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
     </head>
     <body>
 
@@ -20,13 +21,19 @@
           <a href="/auth/login">Login</a>
         <% } %>
          <a href="/">Home</a>
-         <a href="/auth/new">New trip</a> 
+         <% if (user.trips.length > 0) { %>
+        <a href="/auth/new">New trip</a>
+         <% } %>
+  
          <a href="/destinations">Our Destinations</a> 
 
          <a href="/aboutus">About Us</a>
       </nav>
      
       <div id="curentTrip">
+      <% if (user.trips.length === 0) { %>
+       <h5>Hey! You haven't booked any trips if you'd like to book a trip <a href="/auth/new">click Here!</a></h5>
+     <% } %>
       <% for (let i = 0; i < user.trips.length; i++) { %>
      
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>

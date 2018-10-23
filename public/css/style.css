@@ -1,20 +1,30 @@
 html{
-  background-image: url(https://media.giphy.com/media/fHrM9Iyl0KNbBYj2lg/giphy.gif);
+  
   background-color:rgba(0, 0, 0, .5);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background-color: black;
  
 }
 body{
-  background: rgba(0, 0, 0, .5);
+  /*
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fl0MYJAzu5RTVSGeiY%2Fgiphy.gif&f=1);
+ */
+ 
   background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-repeat: no-repeat;
   
+} 
+header > h1{
+  font-size: 100px;
+  margin-top: 25px;
 }
 h1{
   color: #eeb525;
@@ -24,6 +34,9 @@ h1{
   letter-spacing: 5px;
   margin-bottom: 2px;
   margin-top: 2px;
+  font-family: 'Orbitron',
+  sans-serif;
+  line-height: 65px;
   
 }
 h2{
@@ -31,25 +44,27 @@ h2{
   font-size: 30px;
   color: cornflowerblue;
   text-shadow: 2px 2px #f500e9e5;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-align: center;
+  font-family: 'Righteous',
+  cursive;
   
 }
 h3{
   margin-top: 2px;
+  margin-bottom: 5px;
   font-size: 25px;
   color: #eeb525;
   text-shadow: 2px 2px #f500e9e5;
   letter-spacing: 2px;
+  text-align: center;
 }
 h4{
   font-size: 1.5em;
   color: mediumvioletred;
   text-shadow: 1.5px 1px goldenrod;
   margin: 2px 5px;
-}
-a{
-  margin: 10px;
+  text-align: center;
 }
 #mehhh {
     background: rgba(120, 156, 255, 0.75);
@@ -64,49 +79,45 @@ a{
 
 }
 nav{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   background-color: rgba(255, 183, 0, 0.822);
   border: 2px outset cornflowerblue;
 }
 section{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 5px ridge #99cd32c5;
-  border-radius: 15px 15px 0 0;
+  border-radius: 10px;
   margin-bottom: 15px;
   padding: px;
-  background: #24e2b3a2;
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fhdwpro.com%2Fwp-content%2Fuploads%2F2017%2F10%2FHD-Space-Background-380x250.jpg&f=1) ;
   text-align: center;
-  height: 50px;
-}
-ul.destinations{
-  padding: 10px;
-  font-size: 30px;
- 
- 
 
-  list-style: none;
+  /* height: 50px; */
 }
-li{
+li > a{
   list-style: none;
   color: rgb(192, 143, 20);
-  text-shadow: 1px 1.5px maroon;
-  font-size: 25px;
+  text-shadow: 2px 2px black;
+  font-size: 30px;
 }
 a{
   text-decoration: none;
   color: #c900bfbf;
-  text-shadow: 2px 2px rgb(2, 49, 58);
+  text-shadow: 1px 2px rgb(0, 0, 0);
+  margin: 10px;
+  text-align: center;
+  padding: 5px;
 }
-ul.destinations{
+.destinations{
+  margin-top: 20px;
   padding: 20px;
   font-size: 25px;
-  background: rgba(0, 255, 213, 0.596);
+  list-style: none;
   border-radius: 5px 20px 5px 20px;
   text-align: center;
   border: 3px ridge rgba(153, 205, 50, 0.774);
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fbighdwalls.com%2Fwp-content%2Fuploads%2FMagellanic-Cloud-hd-space-wallpaper008.jpg&f=1);
+  background-size: cover;
+
 }
 nav{
   font-size: 25px;
@@ -117,10 +128,42 @@ div{
   align-items: center;
   background-color: rgba(120, 156, 255, 0.582);
   padding: 20px;
-  border: 3px ridge rgba(153, 205, 50, 0.774);
-  margin-top: 50px;
+  border-top: 3px ridge rgba(153, 205, 50, 0.774);
+  border-bottom: 3px ridge rgba(153, 205, 50, 0.774);
+  border-right: 4px groove #c900bfbf;
+  border-left: 4px groove #c900bfbf;
+  /* margin-top: 50px; */
   font-size: 25px;
+  margin-bottom: 20px;
 }
 p{
   margin-top: 0px;
+}
+div#fleet{
+  margin-bottom: 20px;
+}
+aside{
+  padding: 10px;
+}
+hr{
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: outset;
+  border-width: 1px;
+}
+ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+}
+li{
+  padding: 10px;
+  font-size: 20px;
 }

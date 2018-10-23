@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Destinations = require("../models/destinations")
-
-const popDestinations = require("../models/populateDestinations")
+const Destinations = require("../models/destinations");
+const popDestinations = require("../models/populateDestinations");
 
 
     // Create Destinations
@@ -24,9 +23,9 @@ router.get('/', async(req, res)=>{
             id: req.session.id
         })
     } catch (err) {
-        console.log(err, "this is the err");
-    }  
-})
+        res.redirect("/error")
+    };
+});
 
 router.get('/:id', async (req, res) => {
     req.session.lastPage = "Destinations";
@@ -40,23 +39,10 @@ router.get('/:id', async (req, res) => {
             name: req.session.name,
             logged: req.session.logged,
             id: req.session.id
-        })
+        });
     } catch (err) {
-        console.log(err, "this is the err");
-    }
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+        res.redirect("/error")
+    };
+});
 
 module.exports = router;

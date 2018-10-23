@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
   </head>
   <body>
   <section>
@@ -33,28 +34,31 @@
         <h3>Our Purpose</h3>
         <p>Our purpose here at G.I.T.S is to ensure that our clients enjoy a safe, entertaining, and swift trip through the last frontier. We pride ourselves in our ability to put a smile on your face as we traverse the heavens. With our ever growing fleet of Next-Gen Starships we are always a step ahead of SpaceX and Amazon!! </p>
       </div>
-      <div>
-        <h3 id="">Our Fleet</h3>
+      <div id="fleet">
+        <h3 >Our Fleet</h3>
         <p>Our fleet is comprised of ships built with technology from the future......literally. One day, while on a trip to a Hackers Meetup, the founders of G.I.T.S. were smoking peyote when they were abruptly visited by multidimensional traveling humanoids who gifted them with unprecedented knowledge. Using this miraculous achievement they crafted three ships that make SpaceX's Falcon rockets look like Nissan Sentra's.</p>
       </div>
+      <hr>
       <br>
-      <br>
-      <h3>The Fleet</h3>
+      <h3>The Ships</h3>
       <% for (let i = 0; i < ship.length; i++) { %>
       <div>
           <li><strong>Ship:</strong> <%=ship[i].name%></li>
          <li><strong>Top Speed:</strong> <%=ship[i].speedInKmHr%> km/hr</li>
           <li><strong>Capacity:</strong> <%=ship[i].capacity%></li>
           <li><strong>Captain:</strong> <%=ship[i].captain%></li>
-          <li><strong>Flight Attendants:</strong> <%=ship[i].flightAttendants%></li>
-          
+          <li><strong>Flight Attendants:</strong> <%=ship[i].flightAttendants%></li>          
           <img src="<%=ship[i].image%>" alt="Ships Image">
       </div>       
         <% } %>
         <br>
         <br>
         <br>
-        <h4>*Disclaimer*</h4>
-    <h3>In the event that you don't make it to your destination!!</h3>  
+        <hr>
+    <aside>
+       <h4>*Disclaimer*</h4>
+    <h3>In the event that you don't make it to your destination we will refund your immediate family 50% of your ticket cost!!! Hooray!!!</h3>  
+    </aside>    
+       
   </body>
 </html>

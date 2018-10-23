@@ -42,21 +42,27 @@ app.use("/aboutus", aboutUsController);
 
 
 
+app.use("/error", (req, res) => {
+    res.render("error.ejs")
+})
 
 
 ////////////   Home     ////////////////////
-app.use('/', (req, res) =>{
-
-req.session.lastPage = "Home"
+app.use('/', async(req, res) =>{
+  
+  try{
+    req.session.lastPage = "Home"
     req.session.message = "";
-    res.render("home.ejs", {username: req.session.username,
-    name: req.session.name,
-  logged : req.session.logged,
-id: req.session.id})
+    await res.render("home.ejs", {username: req.session.username,
+      name: req.session.name,
+      logged : req.session.logged,
+      id: req.session.id})
+    }
+  catch(err){
+    res.redirect("/error")
+
+}
 });
-
-
-
 
 app.listen(port, ()=>{
     console.log(`i can hear you on port: ${port}`);
