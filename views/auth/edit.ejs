@@ -5,10 +5,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
     </head>
     <body>
-      <nav>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/aboutus">About Us</a>
+          <a href="/destinations">Destinations</a>
+          <a href="/auth/new">New Trip</a> 
+          <a href="/auth/<%= id %>">My trips</a> 
+          
+          <% if(logged === true){ %>
+          <a href="/auth/logout">Logout</a>
+
+          <% }else { %>
+            <a href="/auth/login">Login</a>
+          <% } %>
+        </nav>
           Edit Your account <br>
           <form method="POST" action="/auth/<%= user._id %>?_method=PUT">
             <small><%= usedUsername %></small>
@@ -21,7 +34,7 @@
             <a href="/">Home</a><br>
             <a href="/auth/<%= user.id %>">Nevermind</a>
           </form>
-      </nav>
+      
     
     </body>
 </html>

@@ -54,5 +54,5 @@ By:
 - Mongoose-unique-validator
 - Req.Sessions Login validation 
 - Calculating the escape velocity from Ganymede with a payload of 100 humans
-
+- Redirecting from google authentication back to localhost
 

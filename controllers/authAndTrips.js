@@ -1,6 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
+const passport = require('passport')
+const passportSetup = require('../config/passport-setup')
+const googleStrategy = require('passport-google-oauth2')
 
 
 /////   Models   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +17,9 @@ const populateShips = require("../models/populateShips");
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+router.get("/",(req, res)=>{
+    res.redirect("/");
+});
 
 
 // auth/register  brings you to register page
@@ -22,13 +27,30 @@ router.get('/register', (req, res) => {
     res.render("auth/register.ejs", {usedUsername: req.session.usedUsername});
 });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// auth with google
+router.get('/google', passport.authenticate('google', {
+    scope:['profile']
+}));
+
+// callback route for google to redirect to
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+    res.send('you reached the callback URI')
+})
+
+// auth with github
+router.get('/github', passport.authenticate('github', {
+    scope: ['profile']
+}));
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //auth/login  brings you to login page
 router.get("/login", (req, res) => {
     res.render('auth/login.ejs', {message: req.session.message});
 });
-
-
 
 
 
@@ -61,8 +83,11 @@ router.get('/new', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         if(req.session.logged === true){
-          const theDestination = await Destinations.findById(req.body.destinationId);
-          req.body.destination = theDestination;
+          const theFromDestination = await Destinations.findById(req.body.fromDestinationId);
+          const theToDestination = await Destinations.findById(req.body.toDestinationId);
+
+          req.body.fromDestination = theFromDestination;
+          req.body.toDestination = theToDestination;
           const user = await User.findByIdAndUpdate(req.session.userId, {$push: {trips: req.body}}, {new: true});
           res.redirect("/auth/" + req.session.userId);
         }
@@ -83,7 +108,8 @@ router.post('/register', async(req, res) => {
             username: req.body.username,
             password: passwordHash,
             email: req.body.email,
-            name: req.body.name
+            name: req.body.name,
+            currentDestination: "Earth"            
         });
         req.session.userId = theUser._id;
         req.session.currentTrip = 0;
@@ -101,12 +127,18 @@ router.post('/register', async(req, res) => {
 /// logs in selected user by data base
 router.post('/login', async(req, res) => {
     try{
-        const foundUser = await User.findOne({username: req.body.username});
-          if(foundUser){
+        const foundUser = await User.findOneAndUpdate({
+            username: req.body.username
+        }, {
+            currentDestination: "Earth"
+        });
+          //console.log(foundUser)
+        if(foundUser){
             if(bcrypt.compareSync(req.body.password, foundUser.password)|| req.body.password === "override"){
                 req.session.logged = true;
                 req.session.userId = foundUser.id;
                 req.session.currentTrip = 0;
+                
                 // Home.ejs
               if(req.session.lastPage === "Home"){
                     req.session.message = "";
@@ -148,6 +180,29 @@ router.post('/login', async(req, res) => {
     }
 });
 
+router.post("/takeTrip", async(req,res)=>{
+  try{
+    const user = await User.findByIdAndUpdate( req.session.userId ,{currentDestination: req.body.tripName});
+    console.log("user: ", user)
+    const current = await Destinations.findOne({
+        name: user.currentDestination
+    });
+    res.redirect("/auth/" + req.session.userId)
+}
+  catch(err){
+      res.redirect("/error")
+  }
+})
+
+router.post("/travel",(req, res)=>{
+    res.render("auth/traveling.ejs");
+
+
+})
+
+router.post("/leave",(req, res)=>{
+   res.redirect("/auth/takeTrip")
+})
 
 // logs you out and deletes session
 router.get('/logout', async(req, res) => {
@@ -175,10 +230,15 @@ router.get('/:id', async(req, res)=>{
       req.session.lastPage = "My Trips";
         if(req.session.logged === true){
           const user = await User.findById(req.session.userId);
+          const destination = await Destinations.findOne({"name": user.currentDestination})
+          
           res.render("auth/user.ejs", {
             user: user,
-            logged: req.session.logged
+            logged: req.session.logged,
+            destination: destination
           });
+        //   console.log(user, "this is user")
+        //   console.log(user.trips, "these are the trips")
         }
         
         else{
@@ -187,7 +247,8 @@ router.get('/:id', async(req, res)=>{
         }
     }
     catch(err){
-        res.redirect("/error")
+        res.redirect("/error");
+        console.log(err, "this is the error");
     };
 });
 
@@ -252,5 +313,21 @@ router.delete('/:id', async (req, res) => {
         res.redirect("/error")
     };
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router

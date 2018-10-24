@@ -116,6 +116,19 @@ const destinationsArray = [
     massInKg: 1.08e+23,
     density: "1.64 g/cm³ ",
     image: "/imgs/callisto.png"
+  },
+    {name: "Earth",
+    avgDistanceInKm: 0,
+    travelTimeInHrs: 0,
+    priceInUSD: 0,
+    ships: "/imgs/galileo.png",
+    lengthOfDayInHrs: 24,
+    radiusInKm: 6371,
+    gravity: "9.8 m/s²",
+    escapeVelocity: '11.2 km/s',
+    massInKg: 5.972e+24,
+    density: "5.51 g/cm³",
+    image: "/imgs/earth.png"
   }
 ]
 module.exports = destinationsArray;

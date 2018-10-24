@@ -5,24 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
   </head>
   <body>
-    
-    
+    <header>
+      <h1>   G.I.T.S</h1>
+    </header>
+    <h2>Galactic Interplanetary Travel Systems</h2>
+     
+    <section>
       <nav>
-      <% if(logged === true){ %>
-          <a href="/auth/logout">Logout</a>
+        <a href="/">Home</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/auth/<%= id %>">My Trips</a>
+        <a href="/auth/new">New Trip</a> 
+          <% if(logged === true){ %>
+        <a href="/auth/logout">Logout</a>
 
         <% }else { %>
           <a href="/auth/login">Login</a>
         <% } %>
-        <a href="/">Home</a>
-         <a href="/auth/new">New trip</a> 
-         <a href="/aboutus">About Us</a>
-      </nav>
+      </nav> 
+    </section>
      
-     <h1>Destinations</h1>  
+     
+     <h1>Destinations</h1> 
     
       <section class= "destinations">
         <ul >
