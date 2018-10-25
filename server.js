@@ -31,7 +31,8 @@ app.use(session({
     secret:'what is this',
     resave: false,
     saveUninitialized: false
-}))
+}));
+
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
@@ -46,7 +47,7 @@ app.use("/aboutus", aboutUsController);
 
 ////////////   Home     ////////////////////
 app.use('/', (req, res) =>{
-
+    
 req.session.lastPage = "Home"
     res.render("home.ejs", {username: req.session.username,
     name: req.session.name,

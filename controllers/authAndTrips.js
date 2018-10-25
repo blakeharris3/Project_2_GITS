@@ -11,7 +11,7 @@ const populateDModel = require("../models/populateDestinations");
 const populateShips = require("../models/populateShips");
 const Destinations = require('../models/destinations');
 /////
-
+                              
 //Auth
 router.get('/register', (req, res) => {
     res.render("auth/register.ejs", {usedUsername: req.session.usedUsername});
@@ -23,8 +23,8 @@ router.get("/login", (req, res) => {
 
 //Trips
 router.get('/new', async (req, res) => {
-   req.session.lastPage = " New Trip";
-    
+  try{
+    req.session.lastPage = " New Trip";
     const allDestinations = await Destinations.find({})
     if (req.session.logged === true){
     
@@ -36,11 +36,16 @@ else{
     req.session.message = " you need to be logged in first"
     res.render("auth/login.ejs", {message: req.session.message})
 }
+  }
+  catch(err){
+      console.log(err)
+  }
 })
 
 // Trips
 router.post('/', async (req, res) => {
     try {
+       if(req.session.logged === true){
         // first step : find the destination by id and assign entire obj to a variable
         const theDestination = await Destinations.findById(req.body.destinationId);
         // second step find the user by id and then update with total information
@@ -48,7 +53,10 @@ router.post('/', async (req, res) => {
         console.log("this is where its at ",req.body.destination);
         const user = await User.findByIdAndUpdate(req.session.userId, {$push: {trips: req.body}}, {new: true})
         res.redirect("/auth/" + req.session.userId);
-
+       }
+       else{
+           res.render("auth/login.ejs")
+       }
     } catch(err) {
         res.send(err)
     }
@@ -152,6 +160,7 @@ router.get('/logout', async(req, res) => {
 // My trips route
 router.get('/:id', async(req, res)=>{
         try{
+            if (req.session.logged === true) {
             const user = await User.findById(req.session.userId);
             // console.log('line 139', req.session.userId)
             // console.log('line 140', req.session.currentTrip)
@@ -169,7 +178,7 @@ router.get('/:id', async(req, res)=>{
                 res.redirect("/auth/login");
 
             }
-           
+        }
         }
         catch(err){
             console.log(err, "this is the error")
@@ -180,7 +189,7 @@ router.get("/:id/0", async(req, res)=>{
     try{
         const user = await findById(req.params.id);
       await req.session.currentTrip--;
-      res.render("user.ejs", {user})
+      res.redirect("/auth/" + req.params.id)
     }
     catch(err){
         console.log(err)
