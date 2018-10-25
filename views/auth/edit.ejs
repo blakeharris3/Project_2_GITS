@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
+    </head>
+    <body>
+      <nav>
+          Edit Your account <br>
+          <form method="POST" action="/auth/<%= user._id %>?_method=PUT">
+            <small><%= usedUsername %></small>
+            Name: <input type="text" name="name" value="<%= user.name %>"> <br>
+            Email: <input type="text" name="email" value="<%= user.email %>"> <br>
+            Username: <input type="text" name="username" value="<%= user.username %>"> <br>
+            Password: <input type="password" name="password"> <br>
+            <input type="submit" value="Save Changes">
+            <br>
+            <a href="/">Home</a><br>
+            <a href="/auth/<%= user.id %>">Nevermind</a>
+          </form>
+      </nav>
+    
+    </body>
+</html>

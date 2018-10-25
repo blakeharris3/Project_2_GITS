@@ -5,14 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
     </head>
     <body>
 
          
-    <h1>My trips</h1>
+    <h1>My Trips</h1>
 
     <nav>
-
+        <a href="/auth/<%= user.id %>/edit">Edit User</a>
         <% if(logged === true){ %>
           <a href="/auth/logout">Logout</a>
 
@@ -20,30 +21,34 @@
           <a href="/auth/login">Login</a>
         <% } %>
          <a href="/">Home</a>
-         <a href="/auth/new">New trip</a> 
+         <% if (user.trips.length > 0) { %>
+        <a href="/auth/new">New trip</a>
+         <% } %>
+  
          <a href="/destinations">Our Destinations</a> 
 
          <a href="/aboutus">About Us</a>
       </nav>
      
       <div id="curentTrip">
+      <% if (user.trips.length === 0) { %>
+       <h5>Hey! You haven't booked any trips if you'd like to book a trip <a href="/auth/new">click Here!</a></h5>
+     <% } %>
       <% for (let i = 0; i < user.trips.length; i++) { %>
-       <% if (user.currentTrip === i) { %>
+     
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
-     <% }}  %>
-        <h6>Destination: <%= user.trips[currentTrip].destination[0].name %></h6>
-        <h6>Number of Tickets: <%= user.trips[currentTrip].ticketQty %></h6>
-       
+     
+        <h6>Destination: <%= user.trips[i].destination[0].name %></h6>
+        <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
+        <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
+       <br>
+      <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
+        <input type="hidden" value="<%=user._id%>" name="userId">
+        <input type="submit" value="Cancel Trip">
+      </form>
+      <% }  %>
       </div>
-      <% if(user.currentTrip > 0) { %>
-<a href="/auth/<%= user._id %>/0">Previous trip</a>
-<% } %>
-<a href="/auth/<%= user._id %>/1">Next trip</a>
-<a href="/auth/<%= user._id %>/edit">Edit trip</a>
 
-<form method="POST" action="/auth/<%= user._id %>?_method=DELETE">
 
-  <input type="submit" value="Cancel Trip">
-</form>
     </body>
 </html>

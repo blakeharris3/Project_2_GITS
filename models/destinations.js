@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-const Ship = require('./ships');
 
 const destinationsSchema = new mongoose.Schema({
   name: String, 
   avgDistanceInKm: Number,
   travelTimeInHrs: Number, 
   priceInUSD: Number, 
-  ships: [Ship.schema], 
+  ships: String, 
   lengthOfDayInHrs: Number, 
   radiusInKm: Number,
   gravity: String, 
