@@ -46,6 +46,7 @@
      
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
      
+<<<<<<< HEAD
         <h6><strong class="stats">From:</strong> <%= user.trips[i].fromDestination[0].name %></h6>
         <h6><strong class="stats">To:</strong> <%= user.trips[i].toDestination[0].name %></h6>
         <h6><strong class="stats">Tickets:</strong> <%= user.trips[i].ticketQty %></h6>
@@ -53,6 +54,14 @@
         <h6><strong class="stats">Price:</strong> <em class= "price"><%=user.trips[i].toDestination[0].priceInUSD * user.trips[i].ticketQty%></em> USD</h6>
       
  <% if(user.trips[i].fromDestination[0].name === user.currentDestination){ %>
+=======
+        <h6>From: <%= user.trips[i].fromDestination[0].name %></h6>
+        <h6>To: <%= user.trips[i].toDestination[0].name %></h6>
+        <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
+        <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
+       <br>
+       <% if(user.trips[i].fromDestination[0].name === user.currentDestination){ %>
+>>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
 
        
        <form method="POST" action="/auth/travel">
@@ -60,7 +69,11 @@
          <input type="hidden" name="tripName" value="<%= user.trips[i].toDestination[0].name %>">
          <input type="hidden" name="tripId" value="<%= user.trips[i]._id %>">
 
+<<<<<<< HEAD
          <input type="submit" value="Take Trip">
+=======
+         <input type="submit" value="take trip">
+>>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
        </form>
        <% } %>
       <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
