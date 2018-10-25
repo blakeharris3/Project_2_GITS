@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="aboutushtml" lang="en">
   <head>
     <title>About Us</title>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <link href="/css/style.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
   </head>
-  <body>
+  <body id="aboutusbody">
     <header>
         <div id="logo">
           <img src="/imgs/logo.png" alt="">
@@ -51,14 +51,17 @@
       <br>
       <h3>The Ships</h3>
       <% for (let i = 0; i < ship.length; i++) { %>
-      <div>
-          <li><strong class="stats">Ship</strong>: <%=ship[i].name%></li>
+      <span>
+       <div>
+          <li><strong class="stats">Name</strong>: <%=ship[i].name%></li>
          <li><strong class="stats">Top Speed</strong>: <%=ship[i].speedInKmHr%> km/hr</li>
           <li><strong class="stats">Capacity</strong>: <%=ship[i].capacity%></li>
           <li><strong class="stats">Captain</strong>: <%=ship[i].captain%></li>
           <li><strong class="stats">Flight Attendants</strong>: <%=ship[i].flightAttendants%></li>          
           <img src="<%=ship[i].image%>" alt="Ships Image">
-      </div>       
+      </div>  
+      </span>
+          
         <% } %>
         <br>
         <br>

@@ -39,34 +39,17 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     res.redirect('/auth')
 })
 
-// // auth with github
-// router.get('/github', passport.authenticate('github', {
-//     scope: ['profile']
-// }
-// ));
-
-// // callback route for github to redirect to
-// router.get('/github/redirect', passport.authenticate('github'), (req, res) => {
-//     req.session.logged = true
-//     res.redirect('/auth')
-// })
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
  ///////////////  Working on logging in through oAuth or ////////////////
 //////////////   Standard Registration and log in       ////////////////
 
-// router.get("/oauthLogin", async(req,res)=>{
-// await req.session.oAuth = true;
-// if (req.body.github === true){
-//res.redirect("/github")
-//}
-// if (req.body.google === true){
-//res.redirect("/google")
-//}
-//})
-// 
+router.get("/oauthLogin", async(req,res)=>{
+    req.session.oAuth = true;
+    res.redirect("/auth/google")
+})
+
 
 //auth/login  brings you to login page
 router.get("/login", (req, res) => {
@@ -76,32 +59,69 @@ router.get("/login", (req, res) => {
 
 
 // auth/trips/new creates new trip for user
+// router.get('/new', async (req, res) => {
+//     try {
+//         if (req.session.oAuth === true){
+//         console.log('This should not run')
+//         const user = await User.findById(req.session.passport.user);
+//         } else {
+//         console.log('line 67: ', req.session.userId)
+//         const user = await User.findById(req.session.userId);
+//         }
+//         const allDestinations = await Destinations.find({});
+//         if (req.session.logged === true){
+//             res.render('auth/trips/new.ejs', {
+//                 destinations: allDestinations,
+//                 user: user
+//             });
+//         } else {
+//             req.session.message = " you need to be logged in first"
+//             res.render("auth/login.ejs", {
+//                 message: req.session.message
+//             });
+//         };
+//     } catch (err){
+//         console.log(req.params, "this is params")
+//         res.redirect("/error")
+//         console.log(err, "this is the error");
+//     }
+// });
+
+
+
+////////////Test Area./////////////////////////
+
 router.get('/new', async (req, res) => {
-   try{
-    // if (req.session.oAuth === true){
-    const user = await User.findById(req.session.passport.user);
-
-    // }else {
- //  const user = await User.findById(req.session.userId);
-    //}
-    const allDestinations = await Destinations.find({});
-
-      if (req.session.logged === true){
-    
-        res.render('auth/trips/new.ejs', {
-          destinations: allDestinations,
-          user: user
-        });
-    }
- // if you are not logged in you can't access the page
-      else{
-        req.session.message = " you need to be logged in first"
-        res.render("auth/login.ejs", {message: req.session.message});
-      };
-    }catch(err){
-        res.redirect("/error")
-    }
+ if(req.session.oAuth === true){
+     try {
+         const user = await User.findById(req.session.passport.user);
+         const destinations = await Destinations.find();
+         res.render('auth/trips/new.ejs',{ user, destinations});
+     } catch (error) {
+          console.log(error, "this is error");
+          res.redirect("/error");
+     }
+ } else if(req.session.logged === true) {
+    try {
+        const user = User.findById(req.session.userId)
+        const destinations = await Destinations.find();
+         res.render('auth/trips/new.ejs',{ user, destinations});
+    } catch (error) {
+        console.log(error, "this is error");
+        res.redirect("/error");
+    }        
+ } else {
+    req.session.message = " you need to be logged in first"
+    res.render("auth/login.ejs", {
+        message: req.session.message
+    });     
+ }
 });
+
+
+
+
+
 
 
 
@@ -111,35 +131,40 @@ router.post('/', async (req, res) => {
     try {
         if(req.session.logged === true){
             const theFromDestination = await Destinations.findById(req.body.fromDestinationId);
+            // console.log(theFromDestination, "from destination");
             const theToDestination = await Destinations.findById(req.body.toDestinationId);
-          req.body.fromDestination = theFromDestination;
-          req.body.toDestination = theToDestination;
-         // if(req.session.oAuth === true){
-              await User.findByIdAndUpdate(req.session.passport.user, {
-                 $push: {
-                     trips: req.body
-                 }
-             }, {
-                 new: true
-             });
-            res.redirect("/auth/" + req.session.passport.user);
-         // }
-        //   else{
-               // await User.findByIdAndUpdate(req.session.userId, {
-               //     $push: {
-               //         trips: req.body
-               //     }
-               // }, {
-               //     new: true
-               // });            
-        //     res.redirect("/auth/" + req.session.userId);
-        //   }
+            // console.log(theToDestination, "the to dest")
+            req.body.fromDestination = theFromDestination;
+            req.body.toDestination = theToDestination;
+            // console.log(req.body, "this is the body")
+            if(req.session.oAuth === true){
+                const user = await User.findByIdAndUpdate(req.session.passport.user, {
+                    $push: {
+                        trips: req.body
+                    }
+                }, {
+                    new: true
+                });
+                console.log(user, "this is user")
+                res.redirect("/auth/" + req.session.passport.user);
+            }
+            else{
+                await User.findByIdAndUpdate(req.session.userId, {
+                $push: {
+                    trips: req.body
+                }
+                }, {
+                    new: true
+                });            
+                res.redirect("/auth/" + req.session.userId);
+            }
         }
-        else{
+        else {
           res.redirect("/auth/login");
         }
     } catch(err) {
         res.redirect("/error");
+        console.log(err, "this is the error");
     };
 });
 
@@ -147,7 +172,7 @@ router.post('/', async (req, res) => {
 // auth/register adds new user to data base
 router.post('/register', async(req, res) => {
     try{
-  // if (true){      
+        
         const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
         const theUser = await User.create({
             username: req.body.username,
@@ -160,10 +185,10 @@ router.post('/register', async(req, res) => {
         req.session.currentTrip = 0;
         req.session.message = '';
         req.session.logged = true;
+        console.log(theUser)
         res.redirect('/');
     }
-    // }
-    // else{}
+   
     catch (err){
         console.log(err)
         res.redirect("/error")
@@ -198,13 +223,13 @@ router.post('/login', async(req, res) => {
                 // auth/user.ejs
               else if(req.session.lastPage === "My Trips"){
                   req.session.message = "";
-                //if(req.session.oAuth === true){
+                if(req.session.oAuth === true){
                       res.redirect("/auth/" + req.session.id);
-                    // }
-                    //else{
-                        //req.session.message = "";
-                        //res.redirect("/auth/" + req.session.id);
-                  //  }
+                    }
+                    else{
+                        req.session.message = "";
+                        res.redirect("/auth/" + req.session.id);
+                   }
               }
                 // auth/aboutus.ejs
               else if(req.session.lastPage === "About Us"){
@@ -229,12 +254,13 @@ router.post('/login', async(req, res) => {
     }
     catch (err) {
         res.redirect("/error")
+          console.log(err, "this is the error");
     }
 });
 
 router.post("/takeTrip", async(req,res)=>{
   try{
-      // if (req.session.oAuth === true){
+      if (req.session.oAuth === true){
 const user = await User.findByIdAndUpdate(req.session.passport.user, {
     $set: {
         currentDestination: req.body.tripName
@@ -246,25 +272,26 @@ const user = await User.findByIdAndUpdate(req.session.passport.user, {
     }
 });
    res.redirect("/auth/" + req.session.passport.user)
-  //}
-      // else{
-// const user = await User.findByIdAndUpdate(req.session.userId, {
-//     $set: {
-//         currentDestination: req.body.tripName
-//     },
-//     $pull: {
-//         "trips": {
-//             "_id": req.body.tripId
-//         }
-//     }
-// });
-//   res.redirect("/auth/" + req.session.userId)
-     // }
+  }
+      else{
+const user = await User.findByIdAndUpdate(req.session.userId, {
+    $set: {
+        currentDestination: req.body.tripName
+    },
+    $pull: {
+        "trips": {
+            "_id": req.body.tripId
+        }
+    }
+});
+  res.redirect("/auth/" + req.session.userId)
+     }
 
  
 }
   catch(err){
       res.redirect("/error")
+        console.log(err, "this is the error");
   }
 })
 
@@ -295,6 +322,7 @@ router.get('/logout', async(req, res) => {
   }
   catch (err) {
         res.redirect("/error")
+          console.log(err, "this is the error");
   }
 })
 
@@ -305,12 +333,12 @@ router.get('/:id', async(req, res)=>{
     try{
       req.session.lastPage = "My Trips";
         if(req.session.logged === true){
-           // if(req.session.oAuth === true){
+           if(req.session.oAuth === true){
             const user = await User.findById(req.session.passport.user);
-        //}
-        //else{
-          // const user = await User.findById(req.session.userId);
-        // }
+        }
+        else{
+          const user = await User.findById(req.session.userId);
+        }
             const destination = await Destinations.findOne({"name": user.currentDestination})
           res.render("auth/user.ejs", {
             user: user,
@@ -325,6 +353,7 @@ router.get('/:id', async(req, res)=>{
         }
     }
     catch(err){
+        console.log(user, "this is the user");
         res.redirect("/error");
         console.log(err, "this is the error");
     };
@@ -336,7 +365,7 @@ router.get('/:id', async(req, res)=>{
 router.get("/:id/edit", async (req, res) => {
     
     try {
-        //if (req.session.)
+
       const user = await User.findById(req.session.passport.user);
       res.render("auth/edit.ejs", {
         user,
@@ -346,6 +375,7 @@ router.get("/:id/edit", async (req, res) => {
       });
     } catch (err) {
         res.redirect("/error")
+          console.log(err, "this is the error");
     };
 });
 
@@ -360,14 +390,17 @@ router.put("/:id", async(req, res)=>{
          {name: req.body.name,
          email: req.body.email,
          username: req.body.username,
-         password: passwordHash
+         password: passwordHash,
+         destination
       });
       res.render("auth/user.ejs", {user:updatedUser,
         logged: req.session.logged
       });
     }
     catch(err){
+        console.log(req.session, "this is req")
         res.redirect("/error")
+        console.log(err, "this is the error");
     };
 
 });
@@ -387,9 +420,15 @@ router.delete('/:id', async (req, res) => {
                 }
             }
         )
+       if(req.session.oAuth === true){
+        res.redirect('/auth/' + req.session.passport.user);
+        }
+        else{
         res.redirect('/auth/' + req.session.userId);
+       }
     } catch (err) {
         res.redirect("/error")
+          console.log(err, "this is the error");
     };
 });
 
