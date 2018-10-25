@@ -260,36 +260,6 @@ router.post('/login', async(req, res) => {
 
 router.post("/takeTrip", async(req,res)=>{
   try{
-<<<<<<< HEAD
-      if (req.session.oAuth === true){
-const user = await User.findByIdAndUpdate(req.session.passport.user, {
-    $set: {
-        currentDestination: req.body.tripName
-    },
-    $pull: {
-        "trips": {
-            "_id": req.body.tripId
-        }
-    }
-});
-   res.redirect("/auth/" + req.session.passport.user)
-  }
-      else{
-const user = await User.findByIdAndUpdate(req.session.userId, {
-    $set: {
-        currentDestination: req.body.tripName
-    },
-    $pull: {
-        "trips": {
-            "_id": req.body.tripId
-        }
-    }
-});
-  res.redirect("/auth/" + req.session.userId)
-     }
-
- 
-=======
       const user = await User.findByIdAndUpdate(req.session.userId, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } }});
     //console.log(req.body.tripName)
     // console.log("user: ", user)
@@ -297,7 +267,6 @@ const user = await User.findByIdAndUpdate(req.session.userId, {
         name: user.currentDestination
     });
     res.redirect("/auth/" + req.session.userId)
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
 }
   catch(err){
       res.redirect("/error")
@@ -305,12 +274,6 @@ const user = await User.findByIdAndUpdate(req.session.userId, {
   }
 })
 
-<<<<<<< HEAD
-router.post("/travel",(req, res)=>{
-    res.render("auth/traveling.ejs", 
-    {destination: req.body.tripName,
-    tripId: req.body.tripId});
-=======
 router.post("/travel", async(req, res)=>{
     // const user = await User.findById(req.session.userId);
     // const destination = await Destinations.findOne({name: user.currentDestination})
@@ -319,7 +282,6 @@ router.post("/travel", async(req, res)=>{
     res.render("auth/traveling.ejs",
     {destination: req.body.tripName,
      tripId: req.body.tripId});
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
 
 
 })
@@ -356,103 +318,13 @@ router.get('/:id', async(req, res)=>{
         if(req.session.logged === true){
            if(req.session.oAuth === true){
             const user = await User.findById(req.session.passport.user);
-        }
-        else{
+           }
+        } else {
           const user = await User.findById(req.session.userId);
-<<<<<<< HEAD
-        }
-            const destination = await Destinations.findOne({"name": user.currentDestination})
-=======
          // console.log(user.currentDestination)
           const destination = await Destinations.findOne({'name': user.currentDestination})
           //console.log(destination)
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
-          res.render("auth/user.ejs", {
-            user: user,
-            logged: req.session.logged,
-            destination: destination
-          });
-        }
-        
-        else{
-            req.session.message = "You are not logged in"
-            res.redirect("/auth/login");
-        }
-    }
-    catch(err){
-        console.log(user, "this is the user");
-        res.redirect("/error");
-        console.log(err, "this is the error");
-    };
-});
-
-
-
-// brings you to edit page
-router.get("/:id/edit", async (req, res) => {
-    
-    try {
-
-      const user = await User.findById(req.session.passport.user);
-      res.render("auth/edit.ejs", {
-        user,
-        usedUsername: req.session.usedUsername,
-        id: req.session.passport.user,
-        logged: req.session.logged
-      });
-    } catch (err) {
-        res.redirect("/error")
-          console.log(err, "this is the error");
-    };
-});
-
-
-
-// updates user to what is in the req.body
-router.put("/:id", async(req, res)=>{
-    
-    try{
-      const passwordHash = await bcrypt.hashSync(req.body.password,bcrypt.genSaltSync(10));
-      const updatedUser = await User.findByIdAndUpdate(req.params.id, 
-         {name: req.body.name,
-         email: req.body.email,
-         username: req.body.username,
-         password: passwordHash,
-         destination
-      });
-      res.render("auth/user.ejs", {user:updatedUser,
-        logged: req.session.logged
-      });
-    }
-    catch(err){
-        console.log(req.session, "this is req")
-        res.redirect("/error")
-        console.log(err, "this is the error");
-    };
-
-});
-
-
-
-//Router for deleting trips from user object
-router.delete('/:id', async (req, res) => {
-    try {
-        await User.findOneAndUpdate({
-            "_id": req.body.userId,
-             },{
-                $pull: {
-                    "trips":{
-                        "_id": req.params.id
-                    } 
-                }
-            }
-        )
-       if(req.session.oAuth === true){
-        res.redirect('/auth/' + req.session.passport.user);
-        }
-        else{
-        res.redirect('/auth/' + req.session.userId);
-       }
+        } 
     } catch (err) {
         res.redirect("/error")
           console.log(err, "this is the error");
