@@ -88,12 +88,12 @@ router.get("/login", (req, res) => {
 // });
 
 
-
 ////////////Test Area./////////////////////////
 
 router.get('/new', async (req, res) => {
  if(req.session.oAuth === true){
      try {
+         console.log(req.session, "this is session");
          const user = await User.findById(req.session.passport.user);
          const destinations = await Destinations.find();
          res.render('auth/trips/new.ejs',{ user, destinations});
