@@ -8,8 +8,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
-const keys = require('./config/keys')
-const passport = require('passport')
+const keys = require('./config/keys');
+const passport = require('passport');
 
 
 

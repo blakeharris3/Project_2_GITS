@@ -4,7 +4,6 @@ const Destinations = require("../models/destinations");
 const popDestinations = require("../models/populateDestinations");
 
 
-    // Create Destinations
 // Destinations.collection.insertMany(popDestinations, (err, allGood)=>{
 //     if (err) console.log(err)
 //     else console.log("all gooooud")
