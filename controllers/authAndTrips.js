@@ -260,36 +260,6 @@ router.post('/login', async(req, res) => {
 
 router.post("/takeTrip", async(req,res)=>{
   try{
-<<<<<<< HEAD
-      if (req.session.oAuth === true){
-const user = await User.findByIdAndUpdate(req.session.passport.user, {
-    $set: {
-        currentDestination: req.body.tripName
-    },
-    $pull: {
-        "trips": {
-            "_id": req.body.tripId
-        }
-    }
-});
-   res.redirect("/auth/" + req.session.passport.user)
-  }
-      else{
-const user = await User.findByIdAndUpdate(req.session.userId, {
-    $set: {
-        currentDestination: req.body.tripName
-    },
-    $pull: {
-        "trips": {
-            "_id": req.body.tripId
-        }
-    }
-});
-  res.redirect("/auth/" + req.session.userId)
-     }
-
- 
-=======
       const user = await User.findByIdAndUpdate(req.session.userId, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } }});
     //console.log(req.body.tripName)
     // console.log("user: ", user)
@@ -297,7 +267,6 @@ const user = await User.findByIdAndUpdate(req.session.userId, {
         name: user.currentDestination
     });
     res.redirect("/auth/" + req.session.userId)
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
 }
   catch(err){
       res.redirect("/error")
@@ -305,12 +274,6 @@ const user = await User.findByIdAndUpdate(req.session.userId, {
   }
 })
 
-<<<<<<< HEAD
-router.post("/travel",(req, res)=>{
-    res.render("auth/traveling.ejs", 
-    {destination: req.body.tripName,
-    tripId: req.body.tripId});
-=======
 router.post("/travel", async(req, res)=>{
     // const user = await User.findById(req.session.userId);
     // const destination = await Destinations.findOne({name: user.currentDestination})
@@ -319,7 +282,6 @@ router.post("/travel", async(req, res)=>{
     res.render("auth/traveling.ejs",
     {destination: req.body.tripName,
      tripId: req.body.tripId});
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
 
 
 })
@@ -351,35 +313,28 @@ router.get('/logout', async(req, res) => {
 // where you can edit the user
 router.get('/:id', async(req, res)=>{
         
-    try{
+    try {
       req.session.lastPage = "My Trips";
         if(req.session.logged === true){
            if(req.session.oAuth === true){
             const user = await User.findById(req.session.passport.user);
-        }
-        else{
+            // Check else if
+        } else if (req.session.logged === true) {
           const user = await User.findById(req.session.userId);
-<<<<<<< HEAD
-        }
-            const destination = await Destinations.findOne({"name": user.currentDestination})
-=======
          // console.log(user.currentDestination)
           const destination = await Destinations.findOne({'name': user.currentDestination})
           //console.log(destination)
->>>>>>> ccbc578e63457777cb67a8e6eaa06da1c08b3bf8
           res.render("auth/user.ejs", {
             user: user,
             logged: req.session.logged,
             destination: destination
           });
-        }
-        
-        else{
+        } else{
             req.session.message = "You are not logged in"
             res.redirect("/auth/login");
         }
     }
-    catch(err){
+    } catch(err){
         console.log(user, "this is the user");
         res.redirect("/error");
         console.log(err, "this is the error");
