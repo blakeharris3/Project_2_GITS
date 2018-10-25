@@ -1,41 +1,136 @@
 html{
-  background-image: url(https://media.giphy.com/media/fHrM9Iyl0KNbBYj2lg/giphy.gif);
+  
   background-color:rgba(0, 0, 0, .5);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background-color: black;
  
 }
 body{
-  background: rgba(0, 0, 0, .5);
+  /*
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fl0MYJAzu5RTVSGeiY%2Fgiphy.gif&f=1);
+ */
+  width: 100%;
   background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+} 
+body#home{
+  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div#logo{
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  border: none;
   
 }
+div#logo > img{
+  width: auto;
+  border: none;
+  
+  align-content: flex-start;
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+}
+header > h1{
+  font-size: 100px;
+  margin-top: 25px;
+  font-family: 'Orbitron',
+  sans-serif;
+  align-self: center;
+  text-shadow: 2px 3px #6495ed;
+}
 h1{
-  color: rgb(238, 181, 37);
+  color: #eeb525;
   text-align: center;
-  font-size: 50px;
-  text-shadow: 2px 2px cornflowerblue;
+  font-size: 55px;
+  text-shadow: 2px 2px #6495ed;
   letter-spacing: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 25px;
   margin-top: 2px;
+  font-family: 'Orbitron',
+  sans-serif;
+  line-height: 65px;
   
 }
 h2{
   margin-top: 2px;
   font-size: 30px;
   color: cornflowerblue;
-  text-shadow: 2px 2px rgba(245, 0, 233, 0.897);
-  letter-spacing: 2px;
+  text-shadow: 2px 2px #f500e9e5;
+  letter-spacing: 3px;
+  text-align: center;
+  font-family: 'Righteous',
+  cursive;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
   
 }
-a{
-  margin: 10px;
+h3{
+  margin-top: 2px;
+  margin-bottom: 5px;
+  font-size: 35px;
+  color: #eeb525;
+  text-shadow: 2px 2px #f500e9e5;
+  letter-spacing: 2px;
+  text-align: center;
+}
+h3.planet{
+  font-size: 40px;
+  margin: 25px;
+}
+h4{
+  font-size: 1.5em;
+  color: mediumvioletred;
+  text-shadow: 1px 1px rgb(238, 190, 69);
+  margin: 10px 5px;
+  text-align: center; 
+}
+h4#aboutus{
+  margin: 0px 0 40px 0;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+  width: 100%;
+  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+  font-size: 2em;
+  
+}
+h5{
+  margin-top: 2px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #eeb525;
+  text-shadow: 2px 3px #380335e5;
+  letter-spacing: 2px;
+  text-align: center;
 }
 #mehhh {
     background: rgba(120, 156, 255, 0.75);
@@ -46,58 +141,172 @@ a{
     margin-top: 100px;
     padding: 20px;
     font-size: 25px;
-    border: 3px ridge rgba(153, 205, 50, 0.774);
+    border: 3px ridge #99cd32c5;
+    width: 25%;
 
 }
 nav{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: rgba(255, 183, 0, 0.822);
-  border: 2px outset cornflowerblue;
+  margin: 5px 0px;
+  /* background-color: rgba(255, 183, 0, 0.822); */
+  /* border: 2px outset cornflowerblue; */
+  font-size: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+nav > a{
+  margin: 5px 0px;
+  width: 100%;
 }
 section{
-  border: 5px ridge rgba(153, 205, 50, 0.774);
-  border-radius: 15px 15px 0 0;
+  border: 5px ridge #99cd32c5;
+  /* border-radius: 10px; */
   margin-bottom: 15px;
-  padding: px;
-  background: rgba(36, 226, 179, 0.637);
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fhdwpro.com%2Fwp-content%2Fuploads%2F2017%2F10%2FHD-Space-Background-380x250.jpg&f=1) ;
   text-align: center;
-  height: 50px;
-}
-ul.destinations{
-  padding: 10px;
-  font-size: 30px;
- 
- 
+  width: 100%;
 
-  list-style: none;
+  /* height: 50px; */
 }
-li{
+li > a{
   list-style: none;
-  color: rgb(192, 143, 20);
-  text-shadow: 1px 1.5px maroon;
-  font-size: 25px;
+  color: cornflowerblue;
+  text-shadow: 2px 2px black;
+  font-size: 30px;
+  font-family: 'Righteous',
+  cursive;
 }
 a{
   text-decoration: none;
-  color: rgba(201, 0, 191, 0.75);
-  text-shadow: 2px 2px rgb(2, 49, 58);
+  color: #c900bfbf;
+  text-shadow: 1px 2px rgb(0, 0, 0);
+  margin: 10px;
+  text-align: center;
+  padding: 5px;
+  font-family: 'Righteous',
+  cursive;
+  border-bottom: 2px outset cornflowerblue;
+  border-bottom: 2px outset cornflowerblue;
+  border-right: 2px outset rgb(255, 123, 226);
+  border-left: 2px outset rgb(255, 123, 226);
+  background-color: rgba(255, 183, 0, 0.822);
+  
+
 }
-ul.destinations{
+.destinations{
+  margin-top: 20px;
   padding: 20px;
   font-size: 25px;
-  background: rgba(0, 255, 213, 0.596);
+  list-style: none;
   border-radius: 5px 20px 5px 20px;
   text-align: center;
   border: 3px ridge rgba(153, 205, 50, 0.774);
+  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+  background-size: cover;
+  width: auto;
+
 }
-nav{
-  font-size: 25px;
-}
+
 div{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: rgba(120, 156, 255, 0.582);
   padding: 20px;
-  border: 3px ridge rgba(153, 205, 50, 0.774);
-  margin-top: 100px;
+  border-top: 3px ridge rgba(153, 205, 50, 0.774);
+  border-bottom: 3px ridge rgba(153, 205, 50, 0.774);
+  border-right: 4px groove #c900bfbf;
+  border-left: 4px groove #c900bfbf;
+  /* margin-top: 50px; */
   font-size: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px 5px 10px 5px;
+  
+}
+div#logo{
+  margin: 0;
+  padding: 0;
+}
+article{
+  width: 33%;
+  height: 20%;
+  background-color: greenyellow;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(120, 156, 255, 0.582);
+  padding: 20px;
+  border-top: 3px ridge rgba(153, 205, 50, 0.774);
+  border-bottom: 3px ridge rgba(153, 205, 50, 0.774);
+  border-right: 4px groove #c900bfbf;
+  border-left: 4px groove #c900bfbf;
+  /* margin-top: 50px; */
+  font-size: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px 5px 10px 5px;
+}
+p{
+  margin-top: 0px;
+  text-align: center;
+  font-family: 'Oswald',
+  sans-serif;
+}
+div#fleet{
+  margin-bottom: 20px;
+}
+aside{
+  padding: 10px;
+}
+hr{
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: outset;
+  border-width: 1px;
+}
+ul{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+}
+li{
+  padding: 10px;
+  font-size: 25px;
+  font-family: 'Economica',
+  sans-serif;
+  letter-spacing: 2px;
+  color: #eeb525;
+  text-shadow: 1px 1px #f500e9e5;
+  list-style: none;
+  text-align: center;
+  margin: 10px;
+}
+aside{
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fl0MYJAzu5RTVSGeiY%2Fgiphy.gif&f=1);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: 3px ridge rgba(153, 205, 50, 0.774);
+  border-bottom: 3px ridge rgba(153, 205, 50, 0.774);
+  border-right: 4px groove #c900bfbf;
+  border-left: 4px groove #c900bfbf;
+}
+.stats{
+  text-decoration: underline;
+}
+img{
+  background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px;
+}
+
+#traveling{
+  width: 100%;
+  height: 100%;
 }

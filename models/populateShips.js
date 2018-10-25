@@ -1,23 +1,28 @@
 const populateShipsArray = [
   {
     name: "Galileo",
-    speedInKmHr: 7.5e+7,
-    capacity: 200,
+    speedInKmHr: 7.5e+6,
+    capacity: 2000,
     captain: "Andrea Fettucini",
-    flightAttendants: ["Mercrutio", "Romeo", "Juliet"]
+    flightAttendants: ["Mercrutio", "Romeo", "Juliet"],
+    image: "/imgs/galileo.png"
   },
   {
     name: "Osiris",
-    speedInKmHr: 1e+9,
+    speedInKmHr: 1e+8,
     capacity: 50,
     captain: "Jeff Bezos",
-    flightAttendants: ["alexa", "siri", "hey google"]
+    flightAttendants: ["Alexa", "Siri", "Hey Google"],
+    image: "/imgs/osiris.png"
   },
   {
     name: "Valkyrie",
-    speedInKmHr: 6.8e+7,
-    capacity: 220,
+    speedInKmHr: 6.8e+6,
+    capacity: 1500,
     captain: "Chris Tucker",
-    flightAttendants: ["Petra", "Ulysses"]
+    flightAttendants: ["Petra", "Ulysses"],
+    image: "/imgs/valkyrie.png"
   }
 ]
+
+module.exports = populateShipsArray;

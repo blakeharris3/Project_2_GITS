@@ -4,25 +4,70 @@
     <title>About Us</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
   </head>
   <body>
+    <header>
+        <div id="logo">
+          <img src="/imgs/logo.png" alt="">
+        </div>
+      <h1>   G.I.T.S</h1>
+    </header>
+      <h2>Galactic Interplanetary Travel Systems</h2>
   <section>
       <nav>
-      <% if(logged === true){ %>
+      
+        <a href="/">Home</a>
+         <a href="/aboutus">About Us</a>
+         <a href="/destinations">Destinations</a>
+         <a href="/trips/new">New trip</a> 
+         <a href="/auth/<%= id %>">My trips</a> 
+         <% if(logged === true){ %>
           <a href="/auth/logout">Logout</a>
 
         <% }else { %>
           <a href="/auth/login">Login</a>
         <% } %>
-        <a href="/">Home</a>
-         <a href="/trips/new">New trip</a> 
-         <a href="/aboutus">About Us</a>
-         <a href="/destinations">Back</a>
+         
       </nav>
     </section> 
     <h1>About Us</h1>
     <br>
-      <h1>We fly out of this world... literally</h1>
+    <h4 id="aboutus">Welcome To G.I.T.S <br/> Where We Provide Outstanding Interplanetary Travel Services</h4>
+      <div>
+        <h3>Our History</h3>
+        <p>G.I.T.S was founded in 2018 by three outstanding citizens who were enrolled in GA's renowned WDI cohort. One day while daydreaming and ignoring their instructor, they decided they wanted to go to space.</br> Since that day Blake Harris, Avery-Dante Hinds, and Colin Daniel have forever changed the space travel industry.</p>
+      </div>
+      <div>
+        <h3>Our Purpose</h3>
+        <p>Our purpose here at G.I.T.S is to ensure that our clients enjoy a safe, entertaining, and swift trip through the last frontier. We pride ourselves in our ability to put a smile on your face as we traverse the heavens. With our ever growing fleet of Next-Gen Starships we are always a step ahead of SpaceX and Amazon!! </p>
+      </div>
+      <div id="fleet">
+        <h3 >Our Fleet</h3>
+        <p>Our fleet is comprised of ships built with technology from the future ...... literally. One day, while on a trip to a Hackers Meetup, the founders of G.I.T.S. were hacking time when they were abruptly visited by multidimensional traveling humanoids who gifted them with unprecedented knowledge. Using this miraculous encounter they crafted three ships that make SpaceX's Falcon rockets look like Nissan Sentras.</p>
+      </div>
+      <hr>
+      <br>
+      <h3>The Ships</h3>
+      <% for (let i = 0; i < ship.length; i++) { %>
+      <div>
+          <li><strong class="stats">Ship</strong>: <%=ship[i].name%></li>
+         <li><strong class="stats">Top Speed</strong>: <%=ship[i].speedInKmHr%> km/hr</li>
+          <li><strong class="stats">Capacity</strong>: <%=ship[i].capacity%></li>
+          <li><strong class="stats">Captain</strong>: <%=ship[i].captain%></li>
+          <li><strong class="stats">Flight Attendants</strong>: <%=ship[i].flightAttendants%></li>          
+          <img src="<%=ship[i].image%>" alt="Ships Image">
+      </div>       
+        <% } %>
+        <br>
+        <br>
+        <br>
+        <hr>
+    <aside>
+       <h4>*Disclaimer*</h4>
+    <h5>In the event that you don't make it to your destination we will refund your immediate family 50% of your ticket cost!!! Hooray!!!</h5>  
+    </aside>    
+       
   </body>
 </html>

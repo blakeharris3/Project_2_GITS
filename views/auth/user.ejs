@@ -5,45 +5,60 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/style.css" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
     </head>
     <body>
 
          
-    <h1>My trips</h1>
-
-    <nav>
-
-        <% if(logged === true){ %>
-          <a href="/auth/logout">Logout</a>
-
-        <% }else { %>
-          <a href="/auth/login">Login</a>
+    <h1>My Trips</h1>
+    <section>
+      <nav>
+      <a href="/">Home</a>
+      <a href="/aboutus">About Us</a>
+      <a href="/auth/<%= user.id %>/edit">Edit User</a>
+      <a href="/">Home</a>
+      <% if (user.trips.length > 0) { %>
+      <a href="/auth/new">New trip</a>
         <% } %>
-         <a href="/">Home</a>
-         <a href="/auth/new">New trip</a> 
-         <a href="/destinations">Our Destinations</a> 
-
-         <a href="/aboutus">About Us</a>
-      </nav>
+      <a href="/destinations">Destinations</a> 
+      <% if(logged === true){ %>
+      <a href="/auth/logout">Logout</a>
+        <% }else { %>
+      <a href="/auth/login">Login</a>
+        <% } %>
+    </nav>
+    </section>
+    
      
-      <div id="curentTrip">
-      <% for (let i = 0; i < user.trips.length; i++) { %>
-       <% if (user.currentTrip === i) { %>
-      <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
-     <% }}  %>
-        <h6>Destination: <%= user.trips[currentTrip].destination[0].name %></h6>
-        <h6>Number of Tickets: <%= user.trips[currentTrip].ticketQty %></h6>
+         <h3>Current Location: <em><%= user.currentDestination %></em></h3>
+          <img src="<%= destination.image %>" alt="the planet your on: <%= user.currentDestination %>">
        
+
+      <div id="curentTrip">
+      <% if (user.trips.length === 0) { %>
+       <p>Hey! You haven't booked any trips if you'd like to book a trip <a href="/auth/new">click Here!</a></p>
+     <% } %>
+      <% for (let i = 0; i < user.trips.length; i++) { %>
+     
+      <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
+     
+        <h6>From: <%= user.trips[i].fromDestination[0].name %></h6>
+        <h6>To: <%= user.trips[i].toDestination[0].name %></h6>
+        <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
+        <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
+       <br>
+       <form method="POST" action="/auth/travel">
+         <input type="hidden" name="theId" value="<%= user._id %>">
+         <input type="hidden" name="tripName" value="<%= user.trips[i].toDestination[0].name %>">
+         <input type="submit" value="take trip">
+       </form>
+      <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
+        <input type="hidden" value="<%=user._id%>" name="userId">
+        <input type="submit" value="Cancel Trip">
+      </form>
+      <% }  %>
       </div>
-      <% if(user.currentTrip > 0) { %>
-<a href="/auth/<%= user._id %>/0">Previous trip</a>
-<% } %>
-<a href="/auth/<%= user._id %>/1">Next trip</a>
-<a href="/auth/<%= user._id %>/edit">Edit trip</a>
 
-<form method="POST" action="/auth/<%= user._id %>?_method=DELETE">
 
-  <input type="submit" value="Cancel Trip">
-</form>
     </body>
 </html>

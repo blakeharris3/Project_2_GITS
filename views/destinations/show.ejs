@@ -5,42 +5,50 @@
     <title><%=destinations.name%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
   </head>
   <body>
-    <section>
-      <nav>
-      <% if(logged === true){ %>
-          <a href="/auth/logout">Logout</a>
-
+     <header>
+      <h1>   G.I.T.S</h1>
+    </header>
+    <h2>Galactic Interplanetary Travel Systems</h2>
+     <section>
+        <nav>
+        <a href="/">Home</a>          
+        <a href="/aboutus">About Us</a>
+        <a href="/destinations">Destinations</a>
+        <a href="/auth/<%= id %>">My trips</a>
+        <a href="/auth/new">New trip</a>
+        <% if(logged === true){ %>
+        <a href="/auth/logout">Logout</a>
         <% }else { %>
-          <a href="/auth/login">Login</a>
+        <a href="/auth/login">Login</a>
         <% } %>
-        <a href="/">Home</a>
-         <a href="/auth/new">New trip</a> 
-         <a href="/aboutus">About Us</a>
-         <a href="/destinations">Back</a>
+        <a href="/destinations">Back</a>
       </nav>
+     </section>
     
     <main>
-      <h1><%=destinations.name%></h1>
+      <h3 class="planet"><%=destinations.name%></h3>
 
         <img src="<%=destinations.image%>" alt="Destination Image">
 
       <h4>Information</h4>
       
-        <li>Distance: <%=destinations.avgDistanceInKm%> km</li> <br>
-        <li>Travel time: <%=destinations.travelTimeInHrs%> hours</li> <br>
-        <li>Price: <%=destinations.priceInUSD%> USD</li> <br>
-        <li>Ships that travel to destination: <%=destinations.ship%></li> <br>
-        <li>Day Length: <%=destinations.lengthOfDayInHrs%> hours</li> <br>
-        <li>Radius: <%=destinations.radiusInKm%> km</li> <br>
-        <li>Gravity: <%=destinations.gravity%> <!--m/s²--></li> <br>
-        <li>Escape Velocity: <%=destinations.escapeVelocity%> <!--km/s--></li> <br>
-        <li>Mass: <%=destinations.massInKg%> kg</li> <br>
-        <li>Density: <%=destinations.density%> <!--g/cm³--></li> <br>
+        <li><strong class="stats">Distance</strong>: <%=destinations.avgDistanceInKm%> km</li> <br>
+        <li><strong class="stats">Travel time</strong>: <%=destinations.travelTimeInHrs%> hours</li> <br>
+        <li><strong class="stats">Price</strong>:<%=destinations.priceInUSD%> USD</li> <br>
+        <li><strong class="stats">Day Length</strong>: <%=destinations.lengthOfDayInHrs%> hours</li> <br>
+        <li><strong class="stats">Radius</strong>: <%=destinations.radiusInKm%> km</li><br>
+        <li><strong class="stats">Gravity</strong>: <%=destinations.gravity%> </li> <br>
+        <li><strong class="stats">Escape Velocity</strong>: <%=destinations.escapeVelocity%> </li> <br>
+        <li><strong class="stats">Mass</strong>: <%=destinations.massInKg%> kg</li> <br>
+        <li><strong class="stats">Density</strong>: <%=destinations.density%> </li> <br>
       
       <br>
-      
+      <li><strong class="stats">Ship</strong>:</li>
+      <!-- <li><%=destinations.ships.name%></li> -->
+      <img src="<%=destinations.ships%>" alt="Ship Image">
       
     </main>
   </body>
