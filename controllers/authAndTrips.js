@@ -182,8 +182,8 @@ router.post('/login', async(req, res) => {
 
 router.post("/takeTrip", async(req,res)=>{
   try{
-    const user = await User.findByIdAndUpdate( req.session.userId ,{currentDestination: req.body.tripName});
-    console.log(req.body.tripName)
+      const user = await User.findByIdAndUpdate(req.session.userId, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } }});
+    //console.log(req.body.tripName)
     // console.log("user: ", user)
     const current = await Destinations.findOne({
         name: user.currentDestination
@@ -198,9 +198,11 @@ router.post("/takeTrip", async(req,res)=>{
 router.post("/travel", async(req, res)=>{
     // const user = await User.findById(req.session.userId);
     // const destination = await Destinations.findOne({name: user.currentDestination})
-    console.log(req.body.tripName)
+    console.log(req.body.tripId)
     // console.log(destination)
-    res.render("auth/traveling.ejs",{destination: req.body.tripName});
+    res.render("auth/traveling.ejs",
+    {destination: req.body.tripName,
+     tripId: req.body.tripId});
 
 
 })

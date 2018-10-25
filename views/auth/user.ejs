@@ -47,11 +47,17 @@
         <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
         <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
        <br>
+       <% if(user.trips[i].fromDestination[0].name === user.currentDestination){ %>
+
+       
        <form method="POST" action="/auth/travel">
          <input type="hidden" name="theId" value="<%= user._id %>">
          <input type="hidden" name="tripName" value="<%= user.trips[i].toDestination[0].name %>">
+         <input type="hidden" name="tripId" value="<%= user.trips[i]._id %>">
+
          <input type="submit" value="take trip">
        </form>
+       <% } %>
       <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
         <input type="hidden" value="<%=user._id%>" name="userId">
         <input type="submit" value="Cancel Trip">

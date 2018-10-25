@@ -12,12 +12,13 @@
       <img id="traveling" src="https://66.media.tumblr.com/a28c86e92d2aa2915281cd41a1bd64e3/tumblr_o0ll94A31e1s7z2cyo1_500.gif" alt="space travel">
 
       <div id="deboard">
-      <form id="theForm" method="POST" action="/auth/takeTrip">
-      <input type="hidden" name="tripName" value="<%= destination %>">
-      </form>
+        <form id="theForm" method="POST" action="/auth/takeTrip">
+          <input type="hidden" name="tripName" value="<%= destination %>">
+          <input type="hidden" name="tripId" value="<%= tripId %>">
+        </form>
       </div>
       
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
       <script src="/deboard.js"></script>
-      </body>
+    </body>
 </html>
