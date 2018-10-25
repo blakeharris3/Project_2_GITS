@@ -25,7 +25,10 @@ const aboutUsController = require('./controllers/aboutus')
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+// process.env exists inside of a node server
+// process.env exists inside of a node server
 require('./db/db');
 
     ////////////////////////////////////////////////////////////////////////////////
