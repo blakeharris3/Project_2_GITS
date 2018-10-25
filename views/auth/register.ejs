@@ -5,24 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
     </head>
     <body >
-     <h1> Register Here </h1>
-    <nav>
-        <a href="/">Home</a>
-         <a href="/trips/new">New trip</a> 
-         <a href="/destinations">Our Destinations</a> 
-         <a href="/aboutus">About Us</a>
-      </nav>
+        <h1> Register Here </h1>
+        <section>
+            <nav>
+            <a href="/">Home</a>
+            <a href="/aboutus">About Us</a>
+            <a href="/destinations">Destinations</a>
+            <a href="/trips/new">New trip</a>   
+        </nav>
+        </section>
 
-    <form method="POST" action="/auth/register" id="mehhh">
-        <small><%= usedUsername %></small>
-        Name: <input type="text" name="name"><br>
-        Email: <input type="text" name="email"><br>
-        Username: <input type="text" name="username"><br>
-        Password: <input type="password" name="password"><br>
-        <input type="submit" value="submit">
-    </form>
+        <form method="POST" action="/auth/register" id="mehhh">
+            <small><%= usedUsername %></small>
+            Name: <input type="text" name="name"><br>
+            Email: <input type="text" name="email"><br>
+            Username: <input type="text" name="username"><br>
+            Password: <input type="password" name="password"><br>
+            <input type="submit" value="submit">
+        </form>
     </body>
 </html>

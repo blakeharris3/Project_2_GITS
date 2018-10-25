@@ -12,7 +12,8 @@
       <nav>
         <a href="/">Home</a>
         <a href="/destinations">Destinations</a>
-        <a href="/aboutus">About Us</a>  
+        <a href="/aboutus">About Us</a> 
+         <a href="/auth/logout">Logout</a> 
         <br>
       </nav>
     </section>
@@ -21,7 +22,12 @@
     <div>
        <form action="/auth" method="POST">
       Passenger Name: <input type="text" name="name"><br>
-      Destination: <select name="destinationId">
+      From: <select name="fromDestinationId">
+        <%for (let i = 0; i < destinations.length; i++){ %>
+            <option value="<%=destinations[i]._id%>"><%=destinations[i].name%></option>
+        <%}%>
+        </select><br>
+      To: <select name="toDestinationId">
         <%for (let i = 0; i < destinations.length; i++){ %>
             <option value="<%=destinations[i]._id%>"><%=destinations[i].name%></option>
         <%}%>
@@ -30,7 +36,7 @@
       Bag Count: <input type="number" name="luggageQty"><br>
       <button type="submit">Confirm Flight</button>
     </form>
-    <a href="/auth/<%= user.id %>">Nevermind</a>
+    <a href="/auth/<%= user.id %>">This is your last chance to cancel (aka survive)</a>
     </div>
    
   

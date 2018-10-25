@@ -5,27 +5,51 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Righteous|Orbitron" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Diplomata|Economica|Londrina+Shadow|Orbitron|Oswald|Righteous" rel="stylesheet">
     </head>
-    <body>
+    <body id="home">
      <header>
+        <div id="logo">
+          <img src="/imgs/logo.png" alt="">
+        </div>
         <h1>   G.I.T.S</h1>
      </header>
       <h2>Galactic Interplanetary Travel Systems</h2>
       <section>
         <nav>
+          <a href="/">Home</a>
+          <a href="/aboutus">About Us</a>
+          <a href="/destinations">Destinations</a>
+          <a href="/auth/new">New Trip</a> 
+          <a href="/auth/<%= id %>">My trips</a> 
+          
           <% if(logged === true){ %>
           <a href="/auth/logout">Logout</a>
 
           <% }else { %>
             <a href="/auth/login">Login</a>
           <% } %>
-
-          <a href="/auth/new">New Trip</a> 
-          <a href="/destinations">Our Destinations</a> 
-          <a href="/auth/<%= id %>">My trips</a> 
-          <a href="/aboutus">About Us</a>
         </nav>
-      </section>  
+      </section> 
+      <%destinations.forEach(destination => {%>
+
+     
+      <div>
+        <h3>Popular Destinations</h3>
+        <h5>Check Out These Popular Destinations That We Service</h5>
+        <img src="<%=destination.image%>" alt="Image">
+        <p> 
+
+          <li>Name: <%=destination.name%></li>
+          <li>Price Per Ticket:<em class= "price"> <%=destination.priceInUSD%></em> USD</li>
+          <li>Travel Time: <%=destination.travelTimeInHrs%> Hrs</li>
+          <li>Distance: <%=destination.avgDistanceInKm%> Km</li>
+        </p>
+      </div>
+ <% })%>
+      <footer>
+        <h5>Copyright 2018 Galactic Interplanetary Travel Systems</h5>
+      </footer>
     </body>
+    
 </html>

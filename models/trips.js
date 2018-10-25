@@ -3,7 +3,8 @@ const Destination = require('./destinations')
 
 const tripsSchema = new mongoose.Schema({
   name: String,
-  destination: [Destination.schema],
+  fromDestination: [Destination.schema],
+  toDestination: [Destination.schema],
   ticketQty: Number, 
   luggageQty: Number
 });

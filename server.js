@@ -8,6 +8,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const keys = require('./config/keys');
+const passport = require('passport');
+const _ = require('underscore');
+
+
+const Destinations = require('./models/destinations');
 
 const authController = require("./controllers/authAndTrips");
 const destinationsController = require('./controllers/destinations');
@@ -30,8 +36,15 @@ require('./db/db');
 app.use(session({
     secret:'what is this',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
 }))
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
@@ -48,17 +61,22 @@ app.use("/error", (req, res) => {
 
 
 ////////////   Home     ////////////////////
-app.use('/', async(req, res) =>{
+app.get('/', async(req, res) =>{
   
   try{
+    let allDestinations = await Destinations.find();
+    allDestinations = _.sample(_.shuffle(allDestinations), 3)
     req.session.lastPage = "Home"
     req.session.message = "";
-    await res.render("home.ejs", {username: req.session.username,
+    await res.render("home.ejs", {
+        destinations: allDestinations,
+        username: req.session.username,
       name: req.session.name,
       logged : req.session.logged,
       id: req.session.id})
     }
   catch(err){
+      console.log(err)
     res.redirect("/error")
 
 }
