@@ -239,6 +239,7 @@ router.post('/login', async(req, res) => {
 });
 
 router.post("/takeTrip", async(req,res)=>{
+
   if(req.session.oAuth === true){
       try{
           const user = await User.findByIdAndUpdate(req.session.passport.user, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } } });
@@ -255,6 +256,7 @@ router.post("/takeTrip", async(req,res)=>{
     try{
       const user = await User.findByIdAndUpdate(req.session.userId, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } }});
       res.redirect("/auth/" + req.session.userId)
+
 }
   catch(err){
       res.redirect("/error")
@@ -299,6 +301,7 @@ router.get('/logout', async(req, res) => {
 // auth/:id  brings you to auth/user.ejs, which is the index for all the trips and
 // where you can edit the user
 router.get('/:id', async(req, res)=>{
+
     req.session.lastPage = "My Trips";
     if (req.session.oAuth === true) {   
       try {
@@ -409,6 +412,7 @@ router.delete('/:id', async (req, res) => {
         }
         
      catch (err) {
+
         res.redirect("/error")
           console.log(err, "this is the error");
     };

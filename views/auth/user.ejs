@@ -42,17 +42,16 @@
      <% } %>
       <% for (let i = 0; i < user.trips.length; i++) { %>
      <span id="currenttrip">
-     
-       
-     
+      
       <h4> Trip  <%= i + 1 %> of <%= user.trips.length %></h4>
-     
-        <h6>From: <%= user.trips[i].fromDestination[0].name %></h6>
-        <h6>To: <%= user.trips[i].toDestination[0].name %></h6>
-        <h6>Tickets: <%= user.trips[i].ticketQty %></h6>
-        <h6>Checked Bags: <%= user.trips[i].luggageQty %></h6>
-       <br>
-       <% if(user.trips[i].fromDestination[0].name === user.currentDestination){ %>
+        <h6><strong class="stats">From:</strong> <%= user.trips[i].fromDestination[0].name %></h6>
+        <h6><strong class="stats">To:</strong> <%= user.trips[i].toDestination[0].name %></h6>
+        <h6><strong class="stats">Tickets:</strong> <%= user.trips[i].ticketQty %></h6>
+        <h6><strong class="stats">Checked Bags:</strong> <%= user.trips[i].luggageQty %></h6>
+        <h6><strong class="stats">Price:</strong> <em class= "price"><%=user.trips[i].toDestination[0].priceInUSD * user.trips[i].ticketQty%></em> USD</h6>
+      
+ <% if(user.trips[i].fromDestination[0].name === user.currentDestination){ %>
+
 
        
        <form method="POST" action="/auth/travel">
@@ -60,7 +59,7 @@
          <input type="hidden" name="tripName" value="<%= user.trips[i].toDestination[0].name %>">
          <input type="hidden" name="tripId" value="<%= user.trips[i]._id %>">
 
-         <input type="submit" value="take trip">
+         <input type="submit" value="Take Trip">
        </form>
        <% } %>
       <form method="POST" action="/auth/<%= user.trips[i]._id %>?_method=DELETE">
