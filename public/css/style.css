@@ -43,7 +43,7 @@ body#destinationsindex{
 }
 body#aboutusbody{
   background-image: url(https://media.giphy.com/media/xUA7b3mdJsdGrzF6dW/giphy.gif),
-  url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wonderfulengineering.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fearth-wallpapers-46.jpg&f=1);
+  url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wonderfulengineering.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fearth-wallpapers-46.jpg&f=1), url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wonderfulengineering.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fearth-wallpapers-46.jpg&f=1);
   background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
@@ -111,8 +111,8 @@ h2{
   
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
+h2#abtus
 h3{
   margin-top: 2px;
   margin-bottom: 5px;
@@ -157,19 +157,6 @@ h6{
   color: cornflowerblue;
   text-shadow: 1px 1px black;
   font-size: 1.3em;
-}
-#mehhh {
-    background: rgba(120, 156, 255, 0.75);
-    background-size: contain;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-    padding: 20px;
-    font-size: 25px;
-    border: 3px ridge #99cd32c5;
-    
-
 }
 nav{
   margin: 5px 0px;
@@ -394,7 +381,7 @@ button{
    border-left: 4px groove #c900bfbf;
    font-size: 15px;
 }
-form{
+form#{
   margin-top: 5px;
 }
 h6 > strong.stats{
@@ -403,6 +390,22 @@ h6 > strong.stats{
 }
 form#googlebutton > input{
   background-image: url(/imgs/google.png);
-  width: 10%;
-  height: 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border: none;
+  background-color: transparent;
 }
+#mehhh {
+    background: rgba(120, 156, 255, 0.75);
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 25px;
+    border: 3px ridge #99cd32c5;
+}
+

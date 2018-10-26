@@ -40,10 +40,10 @@
         <img src="<%=destination.image%>" alt="Image">
         <p> 
 
-          <li>Name: <%=destination.name%></li>
-          <li>Price Per Ticket:<em class= "price"> <%=destination.priceInUSD%></em> USD</li>
-          <li>Travel Time: <%=destination.travelTimeInHrs%> Hrs</li>
-          <li>Distance: <%=destination.avgDistanceInKm%> Km</li>
+          <li><strong class="stats">Name</strong>: <%=destination.name%></li>
+          <li><strong class="stats">Price Per Ticket</strong>:<em class= "price"> <%=destination.priceInUSD%></em> USD</li>
+          <li><strong class="stats">Travel Time</strong>: <%=destination.travelTimeInHrs%> Hrs</li>
+          <li><strong class="stats">Distance</strong>: <%=destination.avgDistanceInKm%> Km</li>
         </p>
       </div>
  <% })%>
