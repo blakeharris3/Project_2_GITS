@@ -20,7 +20,7 @@ const destinationsController = require('./controllers/destinations');
 const aboutUsController = require('./controllers/aboutus')
 
 
-
+const keys = process.env.COOKIEKEY
 
 
 
@@ -43,7 +43,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
+    keys: [keys]
 }))
 
 // initialize passport
