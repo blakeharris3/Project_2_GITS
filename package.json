@@ -16,7 +16,6 @@
   "bugs": {
     "url": "https://github.com/blakeharris3/Project_2_GITS/issues"
   },
-
   "homepage": "https://github.com/blakeharris3/Project_2_GITS#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
