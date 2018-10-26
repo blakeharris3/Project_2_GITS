@@ -348,7 +348,7 @@ img{
   
 }
 #travel{
-  background-image: url(https://66.media.tumblr.com/a28c86e92d2aa2915281cd41a1bd64e3/tumblr_o0ll94A31e1s7z2cyo1_500.gif);
+  /* background-image: url(https://66.media.tumblr.com/a28c86e92d2aa2915281cd41a1bd64e3/tumblr_o0ll94A31e1s7z2cyo1_500.gif); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -408,6 +408,8 @@ form#googlebutton > input{
       padding: 20px;
       font-size: 25px;
       border: 3px ridge #99cd32c5;
+}
 
-
+strong.stats{
+  text-shadow: 1px 1px cornflowerblue;
 }

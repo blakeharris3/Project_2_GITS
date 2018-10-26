@@ -66,15 +66,15 @@ const destinationsArray = [
     image: "/imgs/saturn.png"
   },{
     name: "Bezos Elite VIP Spaceclub",
-    avgDistanceInKm: 7.5e+9,
-    travelTimeInHrs: 75,
-    priceInUSD: 5.274e+7,
+    avgDistanceInKm: "7.5e+9",
+    travelTimeInHrs: "75",
+    priceInUSD: "5.274e+7",
     ships: '/imgs/osiris.png',
-    lengthOfDayInHrs: 24,
-    radiusInKm: 3,
+    lengthOfDayInHrs: "24",
+    radiusInKm: "3",
     gravity: "9.8 m/s²",
     escapeVelocity: "N/A",
-    massInKg: 4.8e+18,
+    massInKg: "4.8e+18",
     density: "N/A",
     image: "/imgs/spacestation.png"
   }, {
@@ -92,15 +92,15 @@ const destinationsArray = [
     image: "/imgs/ganymede.png"
   }, {
     name: "Neptune",
-    avgDistanceInKm: 4.3e+9,
-    travelTimeInHrs: 43,
-    priceInUSD: 1e+6,
+    avgDistanceInKm: "4.3e+9",
+    travelTimeInHrs: "43",
+    priceInUSD: "1e+6",
     ships: '/imgs/osiris.png',
-    lengthOfDayInHrs: 16,
-    radiusInKm: 24622,
+    lengthOfDayInHrs: "16",
+    radiusInKm: "24622",
     gravity: "11.15 m/s²",
     escapeVelocity: "23.5 km/s",
-    massInKg: 1.02e+26,
+    massInKg: "1.02e+26",
     density: "1.02 g/m³",
     image: "/imgs/neptune.png"
   }, {
@@ -116,8 +116,8 @@ const destinationsArray = [
     massInKg: 1.08e+23,
     density: "1.64 g/cm³ ",
     image: "/imgs/callisto.png"
-  },
-    {name: "Earth",
+  },{
+    name: "Earth",
     avgDistanceInKm: 0,
     travelTimeInHrs: 0,
     priceInUSD: 0,

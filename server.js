@@ -8,7 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
-// const keys = require('./config/keys');
+// const keys = require('./config/keys'); // For local emvironment
 const passport = require('passport');
 const _ = require('underscore');
 
@@ -20,7 +20,7 @@ const destinationsController = require('./controllers/destinations');
 const aboutUsController = require('./controllers/aboutus')
 
 
-const keys = process.env.COOKIEKEY
+const keys = process.env.COOKIEKEY || 'cache me outside!'
 
 
 
@@ -43,6 +43,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     maxAge: 24 * 60 * 60 * 1000,
+    // keys: [keys.session.cookieKey]
     keys: [keys]
 }))
 
