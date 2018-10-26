@@ -16,21 +16,23 @@ const populateShips = require("../models/populateShips");
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-router.get("/",(req, res)=>{
+router.get("/", (req, res) => {
     res.redirect("/");
 });
 
 
 // auth/register  brings you to register page
 router.get('/register', (req, res) => {
-    res.render("auth/register.ejs", {usedUsername: req.session.usedUsername});
+    res.render("auth/register.ejs", {
+        usedUsername: req.session.usedUsername
+    });
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // auth with google
 router.get('/google', passport.authenticate('google', {
-    scope:['profile']
+    scope: ['profile']
 }));
 
 // callback route for google to redirect to
@@ -42,10 +44,10 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
- ///////////////  Working on logging in through oAuth or ////////////////
+///////////////  Working on logging in through oAuth or ////////////////
 //////////////   Standard Registration and log in       ////////////////
 
-router.get("/oauthLogin", async(req,res)=>{
+router.get("/oauthLogin", async (req, res) => {
     req.session.oAuth = true;
     res.redirect("/auth/google")
 })
@@ -53,35 +55,43 @@ router.get("/oauthLogin", async(req,res)=>{
 
 //auth/login  brings you to login page
 router.get("/login", (req, res) => {
-    res.render('auth/login.ejs', {message: req.session.message});
+    res.render('auth/login.ejs', {
+        message: req.session.message
+    });
 });
 
 
 
 
 router.get('/new', async (req, res) => {
- if(req.session.oAuth === true){
-     try {
-         const user = await User.findById(req.session.passport.user);
-         const destinations = await Destinations.find();
-         res.render('auth/trips/new.ejs',{ user, destinations});
-     } catch (error) {
-          res.redirect("/error");
-     }
- } else if(req.session.logged === true) {
-    try {
-        const user = User.findById(req.session.userId)
-        const destinations = await Destinations.find();
-         res.render('auth/trips/new.ejs',{ user, destinations});
-    } catch (error) {
-        res.redirect("/error");
-    }        
- } else {
-    req.session.message = " you need to be logged in first"
-    res.render("auth/login.ejs", {
-        message: req.session.message
-    });     
- }
+    if (req.session.oAuth === true) {
+        try {
+            const user = await User.findById(req.session.passport.user);
+            const destinations = await Destinations.find();
+            res.render('auth/trips/new.ejs', {
+                user,
+                destinations
+            });
+        } catch (error) {
+            res.redirect("/error");
+        }
+    } else if (req.session.logged === true) {
+        try {
+            const user = User.findById(req.session.userId)
+            const destinations = await Destinations.find();
+            res.render('auth/trips/new.ejs', {
+                user,
+                destinations
+            });
+        } catch (error) {
+            res.redirect("/error");
+        }
+    } else {
+        req.session.message = " you need to be logged in first"
+        res.render("auth/login.ejs", {
+            message: req.session.message
+        });
+    }
 });
 
 
@@ -140,153 +150,162 @@ router.post('/', async (req, res) => {
 
 
 // auth/register adds new user to data base
-router.post('/register', async(req, res) => {
-    try{
-        
+router.post('/register', async (req, res) => {
+    try {
+
         const passwordHash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
         const theUser = await User.create({
             username: req.body.username,
             password: passwordHash,
             email: req.body.email,
             name: req.body.name,
-            currentDestination: "Earth"            
+            currentDestination: "Earth"
         });
         req.session.userId = theUser._id;
         req.session.currentTrip = 0;
         req.session.message = '';
         req.session.logged = true;
         res.redirect('/');
-    }
-   
-    catch (err){
+    } catch (err) {
         res.redirect("/error")
-        
+
     };
 });
 
 /// logs in selected user by data base
-router.post('/login', async(req, res) => {
-    try{
+router.post('/login', async (req, res) => {
+    try {
         const foundUser = await User.findOneAndUpdate({
             username: req.body.username
         }, {
             currentDestination: "Earth"
         });
-        if(foundUser){
-            if(bcrypt.compareSync(req.body.password, foundUser.password)|| req.body.password === "override"){
+        if (foundUser) {
+            if (bcrypt.compareSync(req.body.password, foundUser.password) || req.body.password === "override") {
                 req.session.logged = true;
                 req.session.userId = foundUser.id;
                 //Redeirect client to the last page they were on 
                 // Home.ejs
-              if(req.session.lastPage === "Home"){
+                if (req.session.lastPage === "Home") {
                     req.session.message = "";
                     res.redirect('/');
-              }            
+                }
                 // Destinations.ejs
-              else if (req.session.lastPage === "Destinations") {
+                else if (req.session.lastPage === "Destinations") {
                     req.session.message = "";
                     res.redirect('/destinations');
-              }
+                }
                 // auth/user.ejs
-              else if(req.session.lastPage === "My Trips"){
-                  req.session.message = "";
-                if(req.session.oAuth === true){
-                      res.redirect("/auth/" + req.session.id);
-                    }
-                    else{
+                else if (req.session.lastPage === "My Trips") {
+                    req.session.message = "";
+                    if (req.session.oAuth === true) {
+                        res.redirect("/auth/" + req.session.id);
+                    } else {
                         req.session.message = "";
                         res.redirect("/auth/" + req.session.id);
-                   }
-              }
+                    }
+                }
                 // auth/aboutus.ejs
-              else if(req.session.lastPage === "About Us"){
+                else if (req.session.lastPage === "About Us") {
                     req.session.message = "";
                     res.redirect("/aboutus");
-              }
+                }
                 // auth/trips/new.ejs
-              else if(req.session.lastPage === "New Trip"){
+                else if (req.session.lastPage === "New Trip") {
                     req.session.message = "";
                     res.redirect("/auth/trips/new");
-              }
-              else{
+                } else {
                     // home.ejs
                     res.redirect('/');
-              };
-            }
-            else{
+                };
+            } else {
                 req.session.message = "Username or password is wrong";
                 res.redirect("/auth/login");
             }
-        }                    
-    }
-    catch (err) {
+        }
+    } catch (err) {
         res.redirect("/error")
     }
 });
 
-router.post("/takeTrip", async(req,res)=>{
+router.post("/takeTrip", async (req, res) => {
 
-  if(req.session.oAuth === true){
-      try{
-          const user = await User.findByIdAndUpdate(req.session.passport.user, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } } });
-          res.redirect("/auth/" + req.session.userId)
+    if (req.session.oAuth === true) {
+        try {
+            const user = await User.findByIdAndUpdate(req.session.passport.user, {
+                $set: {
+                    currentDestination: req.body.tripName
+                },
+                $pull: {
+                    "trips": {
+                        "_id": req.body.tripId
+                    }
+                }
+            });
+            res.redirect("/auth/" + req.session.userId)
 
-      }
-      catch(err){
-          console.log(err)
-          res.redirect("/error");
-      }
-  }
-  
-  else if(req.session.logged === true){
-    try{
-      const user = await User.findByIdAndUpdate(req.session.userId, { $set: { currentDestination: req.body.tripName }, $pull: { "trips": { "_id": req.body.tripId } }});
-      res.redirect("/auth/" + req.session.userId)
+        } catch (err) {
+            console.log(err)
+            res.redirect("/error");
+        }
+    } else if (req.session.logged === true) {
+        try {
+            const user = await User.findByIdAndUpdate(req.session.userId, {
+                $set: {
+                    currentDestination: req.body.tripName
+                },
+                $pull: {
+                    "trips": {
+                        "_id": req.body.tripId
+                    }
+                }
+            });
+            res.redirect("/auth/" + req.session.userId)
 
-}
-  catch(err){
-      res.redirect("/error")
-        console.log(err, "this is the error");
-  }
-}
+        } catch (err) {
+            res.redirect("/error")
+            console.log(err, "this is the error");
+        }
+    }
 
 })
 
-router.post("/travel", async(req, res)=>{
+router.post("/travel", async (req, res) => {
 
-    res.render("auth/traveling.ejs",
-    {destination: req.body.tripName,
-     tripId: req.body.tripId});
+    res.render("auth/traveling.ejs", {
+        destination: req.body.tripName,
+        tripId: req.body.tripId
+    });
 
 
 })
 
-router.post("/travel", async(req, res)=>{
-    res.render("auth/traveling.ejs",
-    {destination: req.body.tripName,
-     tripId: req.body.tripId});
+router.post("/travel", async (req, res) => {
+    res.render("auth/traveling.ejs", {
+        destination: req.body.tripName,
+        tripId: req.body.tripId
+    });
 })
 
-router.post("/leave",(req, res)=>{
-   res.redirect("/auth/takeTrip")
+router.post("/leave", (req, res) => {
+    res.redirect("/auth/takeTrip")
 })
 
 // logs you out and deletes session
-router.get('/logout', async(req, res) => {
-  
-    try{
-    await req.session.destroy((err) => {
-      if (err) {
-        res.send(err);
-      } else {
-    
-      };
-        res.redirect('/');
-    })
-  }
-  catch (err) {
+router.get('/logout', async (req, res) => {
+
+    try {
+        await req.session.destroy((err) => {
+            if (err) {
+                res.send(err);
+            } else {
+
+            };
+            res.redirect('/');
+        })
+    } catch (err) {
         res.redirect("/error")
-  }
+    }
 })
 
 // auth/:id  brings you to auth/user.ejs, which is the index for all the trips and
@@ -334,7 +353,7 @@ router.get('/:id', async (req, res) => {
     }
 
 });
-     
+
 
 
 
@@ -503,7 +522,7 @@ router.put("/:id", async (req, res) => {
 
 
 
-    } catch (error){
+    } catch (error) {
         res.redirect('/error')
     }
 
@@ -530,7 +549,7 @@ router.delete('/:id', async (req, res) => {
         }
     } catch (err) {
         res.redirect("/error")
-        
+
     };
 });
 // brings you to edit page
@@ -547,7 +566,7 @@ router.get("/:id/edit", async (req, res) => {
         });
     } catch (err) {
         res.redirect("/error")
-    
+
     };
 });
 
@@ -595,8 +614,9 @@ router.delete('/:id', async (req, res) => {
             res.redirect('/auth/' + req.session.userId);
         }
     } catch (err) {
-        res.console.log(err, "this is the error");redirect("/error")
-    
+        res.console.log(err, "this is the error");
+        redirect("/error")
+
     };
 });
 // brings you to edit page
