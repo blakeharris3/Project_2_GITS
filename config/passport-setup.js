@@ -1,7 +1,8 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth2')
-const keys = require('./keys')
+// const keys = require('./keys')
 const User = require('../models/users')
+
 
 passport.serializeUser((user, done) => {
     done(null, user.id)
@@ -17,8 +18,8 @@ passport.use(
     new GoogleStrategy({
         // options for the google strat 
             callbackURL:'/auth/google/redirect',
-            clientID: keys.google.clientID,
-            clientSecret: keys.google.clientSecret
+            clientID: process.env.CLIENT_ID || keys.google.clientID,
+            clientSecret: process.env.CLIENT_SECRET || keys.google.clientSecret
         }, (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our database
         User.findOne({googleId: profile.id}).then((currentUser)=> {
@@ -30,7 +31,9 @@ passport.use(
                 // if not, create user in our db
                 new User({
                     username: profile.displayName,
-                    googleId: profile.id
+                    googleId: profile.id,
+                    currentDestination: "Earth"
+
                 }).save().then((newUser) => {
                     console.log('new user created: ' + newUser)
                     done(null, newUser)
@@ -39,3 +42,8 @@ passport.use(
         })
     })
 )
+
+
+
+
+

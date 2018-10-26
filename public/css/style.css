@@ -10,6 +10,12 @@ html{
   background-color: black;
  
 }
+html#aboutushtml{
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wallpapersafari.com%2F17%2F56%2FuecY0N.jpg&f=1);
+  background-size: contain;
+  background-position: bottom center;
+}
+
 body{
   /*
   background-image: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.giphy.com%2Fmedia%2Fl0MYJAzu5RTVSGeiY%2Fgiphy.gif&f=1);
@@ -28,6 +34,20 @@ body#home{
   background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
   background-repeat: no-repeat;
   background-size: cover;
+}
+body#destinationsindex{
+  background-image: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wonderfulengineering.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fearth-wallpapers-18.jpg&f=1);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+body#aboutusbody{
+  background-image: url(https://media.giphy.com/media/xUA7b3mdJsdGrzF6dW/giphy.gif),
+  url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.wonderfulengineering.com%2Fwp-content%2Fuploads%2F2014%2F06%2Fearth-wallpapers-46.jpg&f=1);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-position: top;
 }
 div#logo{
   background: none;
@@ -110,7 +130,7 @@ h4{
   font-size: 1.5em;
   color: mediumvioletred;
   text-shadow: 1px 1px rgb(238, 190, 69);
-  margin: 10px 5px;
+  margin: 25px 5px 0px 5px;
   text-align: center; 
 }
 h4#aboutus{
@@ -132,19 +152,13 @@ h5{
   letter-spacing: 2px;
   text-align: center;
 }
-#mehhh {
-    background: rgba(120, 156, 255, 0.75);
-    background-size: contain;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-    padding: 20px;
-    font-size: 25px;
-    border: 3px ridge #99cd32c5;
-    width: 25%;
-
+h6{
+  margin: 0px;
+  color: cornflowerblue;
+  text-shadow: 1px 1px black;
+  font-size: 1.3em;
 }
+
 nav{
   margin: 5px 0px;
   /* background-color: rgba(255, 183, 0, 0.822); */
@@ -226,6 +240,23 @@ div#logo{
   margin: 0;
   padding: 0;
 }
+span#currenttrip{
+  display: block;
+  width: 600px;
+  height: 350px;
+  padding: 50px;
+  background-image: url(/imgs/gitsticket.png);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+div#ticket{
+  background: none;
+  display: block;
+  height: 100%;
+  border: none;
+  margin: 10px;  
+  padding: 20px;
+}
 article{
   width: 33%;
   height: 20%;
@@ -250,6 +281,7 @@ p{
   text-align: center;
   font-family: 'Oswald',
   sans-serif;
+ 
 }
 div#fleet{
   margin-bottom: 20px;
@@ -309,4 +341,73 @@ img{
 #traveling{
   width: 100%;
   height: 100%;
+}
+.price{
+  color: #6bd66b;
+  font-size: 30px;
+  
+}
+#travel{
+  background-image: url(https://66.media.tumblr.com/a28c86e92d2aa2915281cd41a1bd64e3/tumblr_o0ll94A31e1s7z2cyo1_500.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* iframe{
+  background-color: red;
+} */
+#hide{
+  display: none
+}
+input{
+  color:rgba(231, 82, 112, 0.219);
+  text-shadow: 1px 1px black;
+  background-color:  rgba(157, 218, 92, 0.877);
+  border-top: 3px outset rgba(153, 205, 50, 0.774);
+  border-bottom: 3px outset rgba(153, 205, 50, 0.774);
+  border-right: 4px groove #c900bfbf;
+  border-left: 4px groove #c900bfbf;
+  font-size: 15px;
+}
+input#cancel{
+  background-color: rgba(220, 20, 60, 0.712);
+  
+}
+button{
+   color:rgba(0, 0, 0, 0.219);
+   text-shadow: 1px 1px black;
+   background-color: rgb(120, 206, 35);
+   border-top: 3px outset rgba(153, 205, 50, 0.774);
+   border-bottom: 3px outset rgba(153, 205, 50, 0.774);
+   border-right: 4px groove #c900bfbf;
+   border-left: 4px groove #c900bfbf;
+   font-size: 15px;
+}
+form{
+  margin-top: 5px;
+}
+h6 > strong.stats{
+   color: #eeb525;
+   text-shadow: 1px 1px #a1079ae5;
+}
+form#googlebutton > input{
+  background-image: url(/imgs/google.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border: none;
+  background-color: transparent;
+}
+#mehhh {
+      background: rgba(120, 156, 255, 0.75);
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 25px;
+      border: 3px ridge #99cd32c5;
+
+
 }

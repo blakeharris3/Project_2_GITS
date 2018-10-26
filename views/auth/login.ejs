@@ -18,16 +18,19 @@
         </nav>
         </section>
       
-       
-        <form method="POST" action="/auth/login" id="mehhh">
-            <small><%= message %></small>
-            <a href="/auth/google">Google+</a>
-            <a href="/auth/github">GitHub</a>
-            
+
+        <form id='googlebutton' action="/auth/oauthLogin" method="GET">
+                <input type="submit" value = 'Google+'>
+            </form>
+       <span>
+           <form method="POST" action="/auth/login" id="mehhh">
+            <small><%= message %></small>            
             Username: <input type="text" name="username"><br>
             Password: <input type="password" name="password"><br>
             <input type="submit" value="submit">
         </form>
+       </span>
+        
         <a href="/auth/register">Dont have an account?</a>
     </body>
 </html>

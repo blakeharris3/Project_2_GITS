@@ -21,7 +21,6 @@ By:
 
 - HTML5
 - CSS3
-- Bootstrap
 - JavaScript
 - MongoDB
 - Node.js
@@ -55,4 +54,5 @@ By:
 - Req.Sessions Login validation 
 - Calculating the escape velocity from Ganymede with a payload of 100 humans
 - Redirecting from google authentication back to localhost
+- Passport.use middleware logging to the terminal
 

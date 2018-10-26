@@ -30,27 +30,23 @@
             <a href="/auth/login">Login</a>
           <% } %>
         </nav>
-      </section>  
+      </section> 
+      <%destinations.forEach(destination => {%>
+
+     
       <div>
         <h3>Popular Destinations</h3>
         <h5>Check Out These Popular Destinations That We Service</h5>
-        <p> DESTINATION GOES HERE</p>
+        <img src="<%=destination.image%>" alt="Image">
+        <p> 
+
+          <li>Name: <%=destination.name%></li>
+          <li>Price Per Ticket:<em class= "price"> <%=destination.priceInUSD%></em> USD</li>
+          <li>Travel Time: <%=destination.travelTimeInHrs%> Hrs</li>
+          <li>Distance: <%=destination.avgDistanceInKm%> Km</li>
+        </p>
       </div>
-      <div>
-        <h3>Popular Destinations</h3>
-        <h5>Check Out These Popular Destinations That We Service</h5>
-        <p> DESTINATION GOES HERE</p>
-      </div>
-      <div>
-        <h3>Popular Destinations</h3>
-        <h5>Check Out These Popular Destinations That We Service</h5>
-        <p> DESTINATION GOES HERE</p>
-      </div>
-      <div>
-        <h3>Popular Destinations</h3>
-        <h5>Check Out These Popular Destinations That We Service</h5>
-        <p> DESTINATION GOES HERE</p>
-      </div>
+ <% })%>
       <footer>
         <h5>Copyright 2018 Galactic Interplanetary Travel Systems</h5>
       </footer>

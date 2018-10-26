@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost/gits';
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/gits';
+
+// process.env lives in node, and heroku will attach a URI string to MONGODB_URI
 
 mongoose.connect(connectionString, {useNewUrlParser: true});
 
@@ -15,3 +17,4 @@ mongoose.connection.on('disconnected', () => {
 mongoose.connection.on('error', (err) => {
     console.log('Mongoose error ', err);
 });
+

@@ -22,7 +22,8 @@
             <a href="/auth/login">Login</a>
           <% } %>
         </nav>
-          Edit Your account <br>
+        <div>
+           Edit Your account <br>
           <form method="POST" action="/auth/<%= user._id %>?_method=PUT">
             <small><%= usedUsername %></small>
             Name: <input type="text" name="name" value="<%= user.name %>"> <br>
@@ -34,6 +35,8 @@
             <a href="/">Home</a><br>
             <a href="/auth/<%= user.id %>">Nevermind</a>
           </form>
+        </div>
+         
       
     
     </body>
