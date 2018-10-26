@@ -386,6 +386,10 @@ form{
   margin-top: 5px;
 }
 h6 > strong.stats{
+   color: #eeb525;
+   text-shadow: 1px 1px #a1079ae5;
+}
+form#googlebutton > input{
   background-image: url(/imgs/google.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -393,11 +397,6 @@ h6 > strong.stats{
   height: 100px;
   border: none;
   background-color: transparent;
-}
-form#googlebutton > input{
-  background-image: url(/imgs/google.png);
-  width: 10%;
-  height: 10%;
 }
 #mehhh {
       background: rgba(120, 156, 255, 0.75);
