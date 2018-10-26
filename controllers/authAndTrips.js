@@ -57,42 +57,6 @@ router.get("/login", (req, res) => {
 });
 
 
-<<<<<<< HEAD
-
-// auth/trips/new creates new trip for user
-// router.get('/new', async (req, res) => {
-//     try {
-//         if (req.session.oAuth === true){
-//         console.log('This should not run')
-//         const user = await User.findById(req.session.passport.user);
-//         } else {
-//         console.log('line 67: ', req.session.userId)
-//         const user = await User.findById(req.session.userId);
-//         }
-//         const allDestinations = await Destinations.find({});
-//         if (req.session.logged === true){
-//             res.render('auth/trips/new.ejs', {
-//                 destinations: allDestinations,
-//                 user: user
-//             });
-//         } else {
-//             req.session.message = " you need to be logged in first"
-//             res.render("auth/login.ejs", {
-//                 message: req.session.message
-//             });
-//         };
-//     } catch (err){
-//         console.log(req.params, "this is params")
-//         res.redirect("/error")
-//         console.log(err, "this is the error");
-//     }
-// });
-
-
-////////////Test Area./////////////////////////
-
-=======
->>>>>>> 37c64bafe267215caeec834b847266e73869403a
 router.get('/new', async (req, res) => {
  if(req.session.oAuth === true){
      try {

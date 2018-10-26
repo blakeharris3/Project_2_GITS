@@ -381,7 +381,7 @@ button{
    border-left: 4px groove #c900bfbf;
    font-size: 15px;
 }
-form#{
+form{
   margin-top: 5px;
 }
 h6 > strong.stats{
