@@ -8,7 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
-// const keys = require('./config/keys'); // For local emvironment
+//const keys = require('./config/keys'); // For local emvironment
 const passport = require('passport');
 const _ = require('underscore');
 
@@ -43,7 +43,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     maxAge: 24 * 60 * 60 * 1000,
-    // keys: [keys.session.cookieKey]
+     //keys: [keys.session.cookieKey]
     keys: [keys]
 }))
 

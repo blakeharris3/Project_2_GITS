@@ -220,7 +220,7 @@ a{
 
 }
 
-div{ 
+p, div{ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -412,4 +412,23 @@ form#googlebutton > input{
 
 strong.stats{
   text-shadow: 1px 1px cornflowerblue;
+}
+
+#smaller {
+  text-decoration: none;
+  color: #c900bfbf;
+  text-shadow: 1px 2px rgb(0, 0, 0);
+  margin: 10px;
+  text-align: center;
+  padding: 5px;
+  font-family: 'Righteous';
+  border-bottom: 2px outset cornflowerblue;
+  border-bottom: 2px outset cornflowerblue;
+  border-right: 2px outset rgb(255, 123, 226);
+  border-left: 2px outset rgb(255, 123, 226);
+  background-color: rgba(255, 183, 0, 0.822);
+  height: 27px;
+  width: 118px;
+  
+
 }
