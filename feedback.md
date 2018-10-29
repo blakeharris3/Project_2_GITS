@@ -58,7 +58,7 @@ The above key will serve as a helpful overall gauge of whether you met the proje
 
 ## Project Workflow - 3
 
-Excellent work with your project workflow! Your project’s repository had plenty of development branches for source control management / a detailed README / plenty of commit history. You also included user stories and wireframes in your README per the project 2 prompt and requirements. In addition to this, I also observed the use of a todo list for project management as well, so excellent work, once again everyone!
+Excellent work with your project workflow! Your project’s repository had plenty of development branches for source control management / a detailed README / plenty of commit history. You also included user stories and wireframes in your README per the project 2 prompt and requirements. In addition to this, I also observed the use of a todo list for project management as well, so excellent work, once again everyone!`
 
 
 ## Technical Requirements - 3
