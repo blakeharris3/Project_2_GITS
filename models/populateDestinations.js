@@ -132,3 +132,5 @@ const destinationsArray = [
   }
 ]
 module.exports = destinationsArray;
+
+// Nice work for your seed data, however, you would probably want to seperate this file into a seperate directory.

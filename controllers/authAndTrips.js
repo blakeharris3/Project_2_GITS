@@ -7,12 +7,12 @@ require('../config/passport-setup')
 
 /////   Models   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const User = require('../models/users');
-const shipModel = require("../models/ships");
+const shipModel = require("../models/ships"); // This model was required, but never used
 const Trip = require("../models/trips");
 ///////////////// ships destinations  to initally inject into the database ////////////////////////////////////////////////////////////////
 const Destinations = require('../models/destinations');
-const populateDModel = require("../models/populateDestinations");
-const populateShips = require("../models/populateShips");
+const populateDModel = require("../models/populateDestinations"); // This model was required, but never used
+const populateShips = require("../models/populateShips"); // This model was required, but never used
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -735,3 +735,13 @@ router.delete('/:id', async (req, res) => {
 
 
 module.exports = router
+
+/* This isn't too bad of a controller module.
+ * One thing you might consider for future versions would be to seperate auth controller methods
+ * into a seperate controller module.
+ * 
+ * Also, be careful when you're importing external modules as you shouldn't import
+ * something unless you plan to use it in the file. This would be considered a code quality issue.
+ * 
+ * Good job with the commenting! This helps us understand what each portion of the code is doing.
+ */
