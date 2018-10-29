@@ -2,12 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Destinations = require("../models/destinations");
 const popDestinations = require("../models/populateDestinations");
+// Make sure you're not requiring external modules that are never getting used.
 
 
 // Destinations.collection.insertMany(popDestinations, (err, allGood)=>{
 //     if (err) console.log(err)
 //     else console.log("all gooooud")
 // })
+
+/* The database seed method above is probably something you would want to seperate into a seperate
+ * directory / file
+ */
 
 router.get('/', async(req, res)=>{
         req.session.lastPage = "Destinations";

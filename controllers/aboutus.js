@@ -9,6 +9,10 @@ const Ship = require('../models/ships')
 //     else console.log(res, "this is the res");
 // })
 
+/* For your database seed method above...this would be something you
+ * would probably want to add to a seperate directory labled 'seed_data' etc
+ */
+
 router.get("/", async (req, res)=>{
         req.session.lastPage = "About Us"
     try {

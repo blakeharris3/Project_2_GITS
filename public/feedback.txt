@@ -1,0 +1,2 @@
+Nice work! However, as a good practice, it's recommened to place your JS files
+inside of a seperate directory called JS
